@@ -18,5 +18,16 @@ class DatabaseSeeder extends Seeder
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',
         // ]);
+
+         
+        // o comando a seguir popula o banco de dados com usuarios para texte
+        // php artisan db:seed
+        
+        \App\Models\User::factory(10)->create();
+
+         \App\Models\User::factory()->create([
+             'name' => 'Test User',
+             'email' => 'test@example.com',
+         ]);
     }
 }

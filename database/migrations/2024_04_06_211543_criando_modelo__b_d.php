@@ -13,7 +13,7 @@ return new class extends Migration
     public function up(): void
     {
         //
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('userss', function (Blueprint $table) {
             $table->id();
             $table->string('name');
             $table->string('email')->unique();
@@ -29,6 +29,9 @@ return new class extends Migration
             $table->timestamps();
         });
 
+        // apos criar banco de dados usar o comando " php artisan db:seed " para popular o banco de dados
+
+
 
     }
 
@@ -38,5 +41,6 @@ return new class extends Migration
     public function down(): void
     {
         //
+        Schema::dropIfExists('userss');
     }
 };
