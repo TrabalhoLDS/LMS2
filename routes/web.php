@@ -20,3 +20,5 @@ Route::get('/', function () {
 
 
 Route::get('/home',[AdminController::class, 'index'])->name('home');
+
+
