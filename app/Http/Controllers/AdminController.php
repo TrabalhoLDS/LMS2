@@ -13,6 +13,7 @@ class AdminController extends Controller
 
     if(Auth::id()){
 
+        //procura a coluna usertype dentro da tabela user e usa a função de autorização (do livewire) para liberar a pagina correta
         $usertype = Auth()->user()->usertype;
 
         if($usertype == 'user'){

@@ -18,7 +18,7 @@ Route::get('/', function () {
 });
 
 
-
+// o nome da rota é home
 Route::get('/home',[AdminController::class, 'index'])->name('home');
 
 
