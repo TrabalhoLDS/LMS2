@@ -1,14 +1,3 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LDS</title>
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link href="./css/index_professor.css" rel="stylesheet">
-</head>
 
 <body>
     <style>
@@ -197,90 +186,13 @@
   
     </style>
 
-<!DOCTYPE html>
-<html lang="pt-br">
+  @include('components.Cabecalho')
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LDS</title>
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link href="./css/index_professor.css" rel="stylesheet">
-</head>
+  @include('components.NavbarProf')
 
-<body>
+  @include('components.contprof')
 
-    <!-- Navbar -->
-    <nav class="navbar navbar-expand-sm bg-info navbar-dark">
-    <a class="navbar-brand" href="#">
-        <img src="{{ asset('img/logotipoo.png') }}" alt="Logotipo" width="60" height="60">
-        <!-- Ícone de notificação -->
-        
-    </a>
-    
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-    
-    <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-        <ul class="navbar-nav">
-            <li class="nav-item active">
-                <a class="nav-link" href="dashboard">ADM</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="index.blade.php">Aluno</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="iniprof.blade.php">Professor</a>
-            </li>
-            <li class="nav-item">
-                <!-- Formulário de logout -->
-                <form method="POST" action="{{ route('logout') }}" x-data>
-                    @csrf
-                    <x-dropdown-link href="{{ route('logout') }}"
-                                      @click.prevent="$root.submit();">
-                        {{ __('Sair') }}
-                    </x-dropdown-link>
-                </form>
-            </li>
-        </ul>
-    </div>
-</nav>
+  @include('components.rodape')
 
-  <div class="container">
-    <h2>Turmas</h2>
-    <ul class="turmas">
-      <li>
-        <a href="turma_a.html" class="turma">
-          1 Ensino Médio
-          <span class="icones">
-            <i class="fas fa-chart-bar"></i> <!-- Ícone de estatísticas -->
-            <i class="fas fa-edit"></i> <!-- Ícone de editar -->
-            <i class="fas fa-eye"></i> <!-- Ícone de visualizar -->
-          </span>
-        </a>
-      </li>
-      <li>
-        <a href="turma_a.html" class="turma">
-          2 Ensino Médio
-          <span class="icones">
-            <i class="fas fa-chart-bar"></i> <!-- Ícone de estatísticas -->
-            <i class="fas fa-edit"></i> <!-- Ícone de editar -->
-            <i class="fas fa-eye"></i> <!-- Ícone de visualizar -->
-          </span>
-        </a>
-      </li>
-      <!-- Outras turmas -->
-    </ul>
-  </div>
 
-  <!-- Adicionando jQuery e Bootstrap JS -->
-  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
-</body>
-
-</html>
 
