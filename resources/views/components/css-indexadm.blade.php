@@ -1,7 +1,4 @@
-
-
-<body>
-    <style>
+<style>
         .custom-search-form {
   max-width: 500px;
   margin: 0 auto;
@@ -66,12 +63,3 @@
   color: #333; /* Mudança de cor ao passar o mouse */
 }
     </style>
-
-    @include('components.Cabecalho') 
-    @include('components.NavbarProf')
-    @include('components.contADM')
-    @include('components.rodape')
-
-    
-
-    
