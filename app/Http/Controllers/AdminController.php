@@ -6,6 +6,10 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 
+//apagar para nao sobrepor codigo realizado por Ananda
+use App\Models\Usuario;
+
+
 
 class AdminController extends Controller
 {
@@ -21,7 +25,12 @@ class AdminController extends Controller
 
         }
         else if($usertype == 'admin'){
-            return view('admin.index');
+           // return view('admin.index');
+
+            $usuarios = Usuario::all();
+           // dd($usuarios); // Verifica os dados antes de passá-los para a view
+            return view('admin.index', compact('usuarios'));
+            
 
         }
         else if($usertype == 'prof'){
