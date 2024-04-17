@@ -41,14 +41,11 @@
         <hr class="full-width-line">
     @endforeach
 </div>
-<!-- -->
 
 
 </div>
 <!-- -->
 
-                   
-                    <!-- -->
                 </div>
             </div>
         </div>
