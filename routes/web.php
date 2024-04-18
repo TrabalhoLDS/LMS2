@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\UsuarioController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -20,5 +21,4 @@ Route::get('/', function () {
 
 // o nome da rota é home
 Route::get('/home',[AdminController::class, 'index'])->name('home');
-
-
+Route::resource('users',UsuarioController::class);
