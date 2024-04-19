@@ -30,12 +30,17 @@
                 <p class="p">{{ $user->name }}</p>
             </div>
             <div>
-                <select class="form-control" id="nivelUsuario" name="nivelUsuario">
-                    <option value="" selected disabled hidden>Selecione</option>
-                    <option value="1">Administrador</option>
-                    <option value="2">Professor</option>
-                    <option value="3">Aluno</option>
-                </select>
+                <form id="formAtualizarUsuario" action="{{route('users.update', ['user'=>$user->id])}}" method="POST">
+                    @csrf <!-- Adicione o token CSRF se estiver usando Laravel 7+ -->
+                    <input type="hidden" name="_method" value="PUT">
+                    <select class="form-control" id="nivelUsuario" name="nivelUsuario">
+                        <option value="" selected disabled hidden>Selecione</option>
+                        <option value="admin">Administrador</option>
+                        <option value="prof">Professor</option>
+                        <option value="user">Aluno</option>
+                    </select>
+                    <button type="submit">Salvar</button>
+                </form>
             </div>
         </div>
         <hr class="full-width-line">
