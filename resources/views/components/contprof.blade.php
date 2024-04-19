@@ -2,7 +2,7 @@
     <h2>Turmas</h2>
     <ul class="turmas">
       <li>
-        <a href="turma_a.html" class="turma">
+        <a href="materiasProf" class="turma">
           1 Ensino Médio
           <span class="icones">
             <i class="fas fa-chart-bar"></i> <!-- Ícone de estatísticas -->

@@ -9,11 +9,26 @@ use App\Models\Profsessor;
 class ProfsessorController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Página inicial
      */
     public function index()
     {
-        //
+        return view('prof.materiasProf');
+    }
+    //Adicionar matéria
+    public function add()
+    {
+        return view('prof.addMateria');
+    }
+    //Adicionar aula
+    public function add1()
+    {
+        return view('prof.addAula');
+    }
+
+    public function materia()
+    {
+        return view('prof.materia');
     }
 
     /**

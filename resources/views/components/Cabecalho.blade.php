@@ -39,4 +39,8 @@
 .icones i:hover {
   color: #333; /* Mudança de cor ao passar o mouse */
 }
+.navbar-alerta{
+  color:white;
+  
+}
 </style>

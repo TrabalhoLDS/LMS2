@@ -67,10 +67,8 @@
 }
     </style>
 
-    @include('components.Cabecalho') 
-    @include('components.NavbarProf')
-    @include('components.contADM')
-    @include('components.rodape')
+
+
 
     
 

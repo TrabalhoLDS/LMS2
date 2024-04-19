@@ -21,7 +21,7 @@ class AdminController extends Controller
         $usertype = Auth()->user()->usertype;
 
         if($usertype == 'user'){
-            return view('dashboard');
+            return view('aluno.indexaluno');
 
         }
         else if($usertype == 'admin'){
@@ -44,4 +44,9 @@ class AdminController extends Controller
     }
 
    }
+
+   public function addM()
+    {
+        return view('admin.addMateriaADM');
+    }
 }
