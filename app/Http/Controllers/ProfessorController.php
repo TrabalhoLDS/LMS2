@@ -31,6 +31,11 @@ class ProfessorController extends Controller
         return view('prof.materia');
     }
 
+    public function addCont()
+    {
+        return view('prof.addConteudo');
+    }
+
     /**
      * Show the form for creating a new resource.
      */

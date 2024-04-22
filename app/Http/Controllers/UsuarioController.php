@@ -17,6 +17,16 @@ class UsuarioController extends Controller
         return view('admin.index', ['usuarios' => $users]);
     }
 
+    public function atividade()
+    {
+        return view('aluno.atvAluno');
+    }
+
+    public function quiz()
+    {
+        return view('aluno.quizAluno');
+    }
+
     /**
      * Show the form for creating a new resource.
      */

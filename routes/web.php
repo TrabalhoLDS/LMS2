@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ProfessorController;
+use App\Http\Controllers\UsuarioController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -23,13 +24,26 @@ Route::get('/', function () {
 Route::get('/home',[AdminController::class, 'index'])->name('home');
 Route::resource('users', UsuarioController::class);
 
+//Página de matérias do professor
 Route::get('/materiasProf',[ProfessorController::class, 'index'])->name('materiasProf');
 
+//Página onde o professor adiciona matérias
 Route::get('/addMateria',[ProfessorController::class, 'add'])->name('addMateria');
 
+//Página onde o professor adiciona aulas
 Route::get('/addAula',[ProfessorController::class, 'add1'])->name('addAula');
 
+//Página da matéria escolhida
 Route::get('/materia',[ProfessorController::class, 'materia'])->name('materia');
 
+//ADM adiciona matéria
 Route::get('/addMateriaADM',[AdminController::class, 'addM'])->name('addMateriaADM');
 
+//Professor adiciona atividade
+Route::get('/addConteudo',[ProfessorController::class, 'addCont'])->name('addConteudo');
+
+//tela de visualização de atividades
+Route::get('/atvAluno',[UsuarioController::class, 'atividade'])->name('atvAluno');
+
+//tela de visualização de atividades
+Route::get('/quizAluno',[UsuarioController::class, 'quiz'])->name('quizAluno');

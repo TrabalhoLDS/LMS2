@@ -1,4 +1,6 @@
 <!-- Navbar -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  
 <nav class="navbar navbar-expand-sm bg-info navbar-dark">
     <a class="navbar-brand" href="#">
         

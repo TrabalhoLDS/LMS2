@@ -83,6 +83,17 @@
     margin-top: 5px; /* Ajustando o espaçamento superior */
     margin-bottom: 5px; /* Ajustando o espaçamento inferior */
 }
+
+a {
+    color: #007bff; /* Cor padrão do link */
+    text-decoration: underline; /* Sublinhado padrão */
+    transition: color 0.3s ease; /* Transição suave da cor ao passar o mouse */
+}
+
+a:hover {
+    color: #0056b3; /* Cor do link ao passar o mouse */
+}
+
 </style>
 
 <!-- Título -->
@@ -115,7 +126,7 @@
                         <div class="d-flex align-items-center justify-content-between">
                             <div class="d-flex align-items-center">
                                 <i class="fas fa-calculator mr-3 blue-icon"></i>
-                                <p class="p">Trigonometria</p>
+                                <a href="atvAluno" p class="p">Trigonometria</a>
                                 </div>
                             </div>
                         </div>
@@ -125,7 +136,7 @@
                             <div class="d-flex align-items-center justify-content-between">
                                 <div class="d-flex align-items-center">
                                     <i class="fas fa-flask mr-3 pink-icon"></i> <!-- Ícone representando Química Orgânica -->
-                                    <p class="p">Química Orgânica</p>
+                                    <a href="quizAluno" p class="p">Química Orgânica</a>
                                 </div>
                             </div>
                         </div>

@@ -45,13 +45,7 @@
   <div class="container">
     <!-- Formulário para adicionar conteúdo -->
     <div class="item">
-      <h3 class="titulo-secao">Adicionar Conteúdo<button type="submit" class="btn btn-primary">+</button></h3>
-      
-    </div>
-
-    <!-- Formulário para adicionar atividade -->
-    <div class="item">
-    <h3 class="titulo-secao">Adicionar Atividade<button type="submit" class="btn btn-primary">+</button></h3>
+      <h3 class="titulo-secao">Adicionar Atividade<a href="addAula" class="btn btn-primary">+</a></h3>
       
     </div>
 
