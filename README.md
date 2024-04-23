@@ -11,6 +11,11 @@ Instale também o laravel globalmente se quiser melhor comodidade na linha de co
 
 ## Comandos
 
+### *Migrate
+
+Ao configurar o BD no arquivo .env use o comando "php artisan migate" para configurar o banco de dados 
+    "php artisan:status" para verificar o estado do mesmo 
+
 ### *Seeders*
 
 Para instalar o seeder no projeto caso não esteja intalado utilize: 
