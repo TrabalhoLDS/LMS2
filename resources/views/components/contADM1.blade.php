@@ -23,14 +23,13 @@
 <!-- Nomes, imagens e botões dropdown dentro da moldura -->
 <hr class="full-width-line">
 <div class="centered-names">
-    @foreach($usuarios as $user)
+    @foreach($subjects as $subject)
         <div class="d-flex align-items-center justify-content-between">
             <div class="d-flex align-items-center">
-                <img src="./img/Foto_Bruno.jpg" id="Imagem Bruno" class="mr-3 same-size-img">
-                <p class="p">{{ $user->name }}</p>
+               <p class="p">{{ $subject->name }}</p>
             </div>
             <div>
-                <form id="formAtualizarUsuario" action="{{route('users.update', ['user'=>$user->id])}}" method="POST">
+                <form id="formAtualizarUsuario">
                     @csrf <!-- Adicione o token CSRF se estiver usando Laravel 7+ -->
                     <input type="hidden" name="_method" value="PUT">
                     <select class="form-control" id="nivelUsuario" name="nivelUsuario">
@@ -39,7 +38,6 @@
                         <option value="prof">Professor</option>
                         <option value="user">Aluno</option>
                     </select>
-                    <button type="submit">Salvar</button>
                 </form>
             </div>
         </div>

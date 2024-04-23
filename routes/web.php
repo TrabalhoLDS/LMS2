@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\SubjectUserController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ProfessorController;
@@ -22,6 +23,9 @@ Route::get('/', function () {
 
 // o nome da rota é home
 Route::get('/home',[AdminController::class, 'index'])->name('home');
+
+Route::get('/subjects',[AdminController::class, 'show'])->name('subjects');
+
 Route::resource('users', UsuarioController::class);
 
 //Página de matérias do professor
@@ -47,3 +51,10 @@ Route::get('/atvAluno',[UsuarioController::class, 'atividade'])->name('atvAluno'
 
 //tela de visualização de atividades
 Route::get('/quizAluno',[UsuarioController::class, 'quiz'])->name('quizAluno');
+Route::post('/admin/store',[AdminController::class, 'store'])->name('admin.store');
+
+Route::get('/subject',[AdminController::class, 'subject'])->name('subject');
+
+Route::post('/subjectuser2', [SubjectUserController::class, 'store'])->name('subjectuser.vincular');
+
+Route::get('/subjectuser', [SubjectUserController::class, 'index'])->name('subjectuser');

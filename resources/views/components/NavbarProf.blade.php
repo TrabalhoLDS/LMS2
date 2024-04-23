@@ -4,24 +4,24 @@
     <a class="navbar-brand" href="#">
         <img src="{{ asset('img/logotipoo.png') }}" alt="Logotipo" width="60" height="60">
         <!-- Ícone de notificação -->
-        
+
     </a>
-    
+
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
             aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
-    
+
     <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
         <ul class="navbar-nav">
             <li class="nav-item active">
                 <a class="nav-link" href="addMateriaADM">ADM</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="index.blade.php">Aluno</a>
+                <a class="nav-link" href="subject">Aluno</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="iniprof.blade.php">Professor</a>
+                <a class="nav-link" href="subjectuser">Professor</a>
             </li>
             <li class="nav-item">
                 <!-- Formulário de logout -->

@@ -1,8 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
-use App\Http\Requests\StoreMateriaRequest;
+use Illuminate\Http\Request;
 use App\Http\Requests\UpdateMateriaRequest;
 use App\Models\Materia;
 
@@ -21,15 +20,16 @@ class MateriaController extends Controller
      */
     public function create()
     {
-        //
+
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreMateriaRequest $request)
+    public function store(Request $request)
     {
-        //
+
+
     }
 
     /**
@@ -63,4 +63,5 @@ class MateriaController extends Controller
     {
         //
     }
+
 }

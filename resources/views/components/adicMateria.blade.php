@@ -46,15 +46,11 @@
 <body><br>
 <h2 class="titulo">Adicionar Matéria</h2>
   <div class="container">
-    
-    <form>
+    <form  id="formAtualizarUsuario" action="{{route('admin.store')}}" method="POST">
+        @csrf
       <div class="form-group">
         <label for="nomeMateria">Nome da Matéria:</label>
-        <input type="text" class="form-control" id="nomeMateria" placeholder="Digite o nome da matéria">
-      </div>
-      <div class="form-group">
-        <label for="descricao">Descrição:</label>
-        <textarea class="form-control" id="descricao" rows="3" placeholder="Descreva a matéria"></textarea>
+        <input type="text" class="form-control" id="nomeMateria" name="name" placeholder="Digite o nome da matéria">
       </div>
       <button type="submit" class="btn btn-adicionar">Adicionar Matéria</button>
     </form>

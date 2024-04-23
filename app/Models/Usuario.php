@@ -14,4 +14,9 @@ class Usuario extends Model
     return $this->hasOne(Professor::class);
 }
 
+public function subjects()
+{
+    return $this->belongsToMany(Subject::class);
+}
+
 }
