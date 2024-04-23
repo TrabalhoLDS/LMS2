@@ -11,9 +11,9 @@ Instale também o laravel globalmente se quiser melhor comodidade na linha de co
 
 ## Comandos
 
-### *Migrate
+### *Migrate*
 
-Ao configurar o BD no arquivo .env use o comando "php artisan migate" para configurar o banco de dados 
+Ao configurar o Banco de dados no arquivo .env use o comando "php artisan migrate" para configurar o banco de dados 
     "php artisan:status" para verificar o estado do mesmo 
 
 ### *Seeders*
