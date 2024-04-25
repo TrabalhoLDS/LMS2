@@ -58,3 +58,7 @@ Route::get('/subject',[AdminController::class, 'subject'])->name('subject');
 Route::post('/subjectuser2', [SubjectUserController::class, 'store'])->name('subjectuser.vincular');
 
 Route::get('/subjectuser', [SubjectUserController::class, 'index'])->name('subjectuser');
+
+
+//rota de crud para professor contendo os metodos basicos do crud (criar, update, deletar, storage)
+Route::resource('professores', 'ProfessorController');
