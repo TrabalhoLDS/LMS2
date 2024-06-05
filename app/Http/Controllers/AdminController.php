@@ -79,7 +79,7 @@ class AdminController extends Controller
     $subject->save();
 
     // Redirecione para alguma página após a criação da matéria
-    return response()->json(['success' => 'Matéria criada com sucesso!']);
+    return response()->json(['success' => 'Matéria criada com sucesso!' . $subject]);
     // Crie uma nova instância do modelo Subject e atribua os valores dos campos
     }
 

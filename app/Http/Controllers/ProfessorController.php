@@ -9,39 +9,39 @@ use Illuminate\Http\Request;
 
 class ProfessorController extends Controller
 {
-    /**
-     * Página inicial
-     */
-    /**
-     *  public function index()
-    *{
-    *    return view('prof.materiasProf');
-    *}
-    *  //Adicionar matéria
-    *public function add()
-    *{
-    *    return view('prof.addMateria');
-    *}
-    *  //Adicionar aula
-    *public function add1()
-    *{
-    *    return view('prof.addAula');
-    *}
-    *
-    *public function materia()
-    *{
-     *   return view('prof.materia');
-    *}
+    
+   //    public function index()
+  //  {
+///return view('prof.materiasProf');
+  //  }
+      //Adicionar matéria
+    public function add()
+    {
+        return view('prof.addMateria');
+    }
+      //Adicionar aula
+    public function add1()
+    {
+        return view('prof.addAula');
+    }
+    
+    public function materia()
+    {
+        return view('prof.materia');
+    }
 
-    *public function addCont()
-    *{
-    *   return view('prof.addConteudo');
-    *}
+    public function boletim()
+    {
+       return view('prof.boletim');
+    }
+
+    public function notas()
+    {
+       return view('prof.notas');
+    }
 
 
-     * 
-     * 
-     */
+  
 
 
     public function index()
@@ -94,5 +94,7 @@ class ProfessorController extends Controller
 
         return redirect('/professores');
     }
+
+  
 
 }

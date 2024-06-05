@@ -15,13 +15,7 @@
     <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
         <ul class="navbar-nav">
             <li class="nav-item active">
-                <a class="nav-link" href="addMateriaADM">ADM</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="subject">Aluno</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="subjectuser">Professor</a>
+                <a class="nav-link" href="addMateriaADM">Adicionar Matéria</a>
             </li>
             <li class="nav-item">
                 <!-- Formulário de logout -->

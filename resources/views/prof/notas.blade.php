@@ -1,6 +1,6 @@
 <x-app-layout>
     @include('components.Cabecalho')    
-    @include('components.navbarADM')
-    @include('components.adicMateria')
+    @include('components.NavbarProf')
+    @include('components.notasDaluno')
     @include('components.rodape')
 </x-app-layout>

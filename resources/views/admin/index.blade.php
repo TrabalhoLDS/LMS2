@@ -3,7 +3,7 @@
 
     
     @include('components.Cabecalho')    
-    @include('components.NavbarProf')
+    @include('components.navbarADM')
     @include('components.contADM')
     @include('components.rodape')
                

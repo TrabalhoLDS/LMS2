@@ -37,6 +37,12 @@ Route::get('/addMateria',[ProfessorController::class, 'add'])->name('addMateria'
 //Página onde o professor adiciona aulas
 Route::get('/addAula',[ProfessorController::class, 'add1'])->name('addAula');
 
+//Página onde o professor visualiza a lista de alunos
+Route::get('/boletim',[ProfessorController::class, 'boletim'])->name('boletim');
+
+//Página onde o professor vizualiza as notas
+Route::get('/notas',[ProfessorController::class, 'notas'])->name('notas');
+
 //Página da matéria escolhida
 Route::get('/materia',[ProfessorController::class, 'materia'])->name('materia');
 
