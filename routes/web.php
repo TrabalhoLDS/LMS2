@@ -24,6 +24,9 @@ Route::get('/', function () {
 // o nome da rota é home
 Route::get('/home',[AdminController::class, 'index'])->name('home');
 
+//rota para a pesquisa de usuários na tela do administrador
+Route::get('/users/search', [AdminController::class, 'search'])->name('users.search');
+
 Route::get('/subjects',[AdminController::class, 'show'])->name('subjects');
 
 Route::resource('users', UsuarioController::class);

@@ -31,6 +31,31 @@
 
         @livewireScripts
 
+        <!-- jQuery e Bootstrap -->
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+<!-- Script de Pesquisa -->
+<script>
+    $(document).ready(function() {
+        $('#search').on('keyup', function() {
+            var query = $(this).val();
+            $.ajax({
+                url: "{{ route('users.search') }}",
+                type: "GET",
+                data: {'search': query},
+                success: function(data) {
+                    $('#user-list').html(data.html);
+                },
+                error: function(xhr) {
+                    console.log(xhr.responseText);
+                }
+            });
+        });
+    });
+</script>
+
+
  
     </body>
 </html>

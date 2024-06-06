@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Usuario extends Model
 {
-    protected $table = 'users'; // Assumindo que a tabela no banco de dados se chama 'users'
+    protected $table = 'users'; // Assume que a tabela no banco de dados se chama 'users'
 
     public function professor()
 {
