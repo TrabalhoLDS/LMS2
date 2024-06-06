@@ -17,7 +17,7 @@ class Professor extends Model
     protected $table = 'professors';
 
     /** Para acessar professor
-     * 
+     * php
      * $professor = Professor::find(1);
      *echo $professor->user->name; // Isso irá imprimir o nome do usuário associado ao professor
      *
