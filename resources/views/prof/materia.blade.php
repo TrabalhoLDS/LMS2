@@ -2,5 +2,5 @@
     @include('components.Cabecalho')    
     @include('components.NavbarProf')
     @include('components.pagMateria')
-    @include('components.rodape')
+    @include('components.rodape') 
 </x-app-layout>

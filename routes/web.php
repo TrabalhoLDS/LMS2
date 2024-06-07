@@ -24,6 +24,9 @@ Route::get('/', function () {
 // o nome da rota é home
 Route::get('/home',[AdminController::class, 'index'])->name('home');
 
+//rota para a pesquisa de usuários na tela do administrador
+Route::get('/users/search', [AdminController::class, 'search'])->name('users.search');
+
 Route::get('/subjects',[AdminController::class, 'show'])->name('subjects');
 
 Route::resource('users', UsuarioController::class);
@@ -37,6 +40,12 @@ Route::get('/addMateria',[ProfessorController::class, 'add'])->name('addMateria'
 //Página onde o professor adiciona aulas
 Route::get('/addAula',[ProfessorController::class, 'add1'])->name('addAula');
 
+//Página onde o professor visualiza a lista de alunos
+Route::get('/boletim',[ProfessorController::class, 'boletim'])->name('boletim');
+
+//Página onde o professor vizualiza as notas
+Route::get('/notas',[ProfessorController::class, 'notas'])->name('notas');
+
 //Página da matéria escolhida
 Route::get('/materia',[ProfessorController::class, 'materia'])->name('materia');
 
@@ -45,6 +54,10 @@ Route::get('/addMateriaADM',[AdminController::class, 'addM'])->name('addMateriaA
 
 //Professor adiciona atividade
 Route::get('/addConteudo',[ProfessorController::class, 'addCont'])->name('addConteudo');
+
+//Rota da Atividade
+Route::get('/startQuiz',[UsuarioController::class, 'QuizAti'])->name('QuizAti');
+
 
 //tela de visualização de atividades
 Route::get('/atvAluno',[UsuarioController::class, 'atividade'])->name('atvAluno');
@@ -58,3 +71,7 @@ Route::get('/subject',[AdminController::class, 'subject'])->name('subject');
 Route::post('/subjectuser2', [SubjectUserController::class, 'store'])->name('subjectuser.vincular');
 
 Route::get('/subjectuser', [SubjectUserController::class, 'index'])->name('subjectuser');
+
+
+//rota de crud para professor contendo os metodos basicos do crud (criar, update, deletar, storage)
+Route::resource('professores', 'ProfessorController');

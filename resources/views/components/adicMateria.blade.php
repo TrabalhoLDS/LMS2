@@ -9,7 +9,7 @@
   <style>
     body {
       font-family: Arial, sans-serif;
-      background-color: #f0f0f0;
+      background-color: #fff;
     }
 
     .container {
@@ -22,12 +22,8 @@
     }
 
     .titulo {
-        font-size: 25px;
-      color: #333;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
+            text-align: center;
+        }
 
     .form-group {
       margin-bottom: 20px;
@@ -36,23 +32,30 @@
     .btn-adicionar {
       background-color: #17A2B7;
       color: #fff;
+      display: block;
+      margin: 0 auto;
     }
 
     .btn-adicionar:hover {
       background-color: #0056b3;
     }
+
+    
+
   </style>
 </head>
 <body><br>
 <h2 class="titulo">Adicionar Matéria</h2>
   <div class="container">
+    <!-- esta sendo enviado para o contoller admin na função store -->
     <form  id="formAtualizarUsuario" action="{{route('admin.store')}}" method="POST">
+      <!-- somente para encriptografia e segurança dos dados do formulário -->
         @csrf
       <div class="form-group">
-        <label for="nomeMateria">Nome da Matéria:</label>
+        <label for="nomeMateria">Nome:</label>
         <input type="text" class="form-control" id="nomeMateria" name="name" placeholder="Digite o nome da matéria">
       </div>
-      <button type="submit" class="btn btn-adicionar">Adicionar Matéria</button>
+      <button type="submit" class="btn btn-adicionar">Adicionar</button>
     </form>
   </div>
 

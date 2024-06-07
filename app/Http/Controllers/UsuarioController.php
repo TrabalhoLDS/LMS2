@@ -22,6 +22,13 @@ class UsuarioController extends Controller
         return view('aluno.atvAluno');
     }
 
+
+//Aluno
+public function QuizAti()
+{
+   return view('aluno.Quiz');
+}
+
     public function quiz()
     {
         return view('aluno.quizAluno');
@@ -62,6 +69,8 @@ class UsuarioController extends Controller
     /**
      * Update the specified resource in storage.
      */
+
+     //usando validaçãop por request
     public function update(Request $request, string $id)
     {
                   // Validação dos dados do formulário (opcional, mas recomendado)
@@ -91,4 +100,6 @@ class UsuarioController extends Controller
     {
         //
     }
+
+
 }

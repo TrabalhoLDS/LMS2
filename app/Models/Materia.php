@@ -14,3 +14,5 @@ class Materia extends Model
      */
     protected $table = 'materias';
 }
+
+
