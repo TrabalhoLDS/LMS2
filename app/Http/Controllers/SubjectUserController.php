@@ -33,7 +33,7 @@ class SubjectUserController extends Controller
     public function index()
     {
         $users = Usuario::all();
-    $subjects = Subject::all();
+        $subjects = Subject::all();
         return view('admin.subjectuser', compact('users', 'subjects'));
     }
 

@@ -69,6 +69,8 @@ public function QuizAti()
     /**
      * Update the specified resource in storage.
      */
+
+     //usando validaçãop por request
     public function update(Request $request, string $id)
     {
                   // Validação dos dados do formulário (opcional, mas recomendado)
