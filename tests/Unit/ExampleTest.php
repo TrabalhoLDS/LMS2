@@ -1,8 +1,7 @@
 <?php
-
 namespace Tests\Unit;
 
-use PHPUnit\Framework\TestCase;
+use Tests\TestCase;
 
 class ExampleTest extends TestCase
 {
@@ -14,19 +13,16 @@ class ExampleTest extends TestCase
         $this->assertTrue(true);
     }
 
-    public function testExemploRota()
-    {
-        $response = $this->get('/exemplo-rota');
 
-        $response->assertStatus(200);
-    }
 
-    public function testExemplohome()
+    public function testExemplohome(): void
     {
-        $response = $this->get('/materiasProf');
+        $response = $this->get('/login');
       
         $response->assertStatus(200);
     } 
+
+
 
     /*
         com este comando "php artisan test tests/Feature/ExemploTeste.php"
@@ -34,7 +30,7 @@ class ExampleTest extends TestCase
 
         para realisar texte em todo diretorio texte é usado "php artisan test"
 
-        e para realisar textes apenas em uma determinada classe como no "ExampleTesr.php" é usado "php artisan test --filter ExemploTeste
+        e para realisar textes apenas em uma determinada classe como no "ExampleTesr.php" é usado "php artisan test --filter Exemplohome"
     */
 
     /*   
