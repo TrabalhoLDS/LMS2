@@ -26,7 +26,7 @@ class AdminController extends Controller
             } else if ($usertype == 'admin') {
                 // return view('admin.index');
 
-                $usuarios = Usuario::paginate(2);
+                $usuarios = Usuario::paginate(10);
 
                 //$usuarios = Usuario::all();
 

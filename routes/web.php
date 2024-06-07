@@ -55,6 +55,10 @@ Route::get('/addMateriaADM',[AdminController::class, 'addM'])->name('addMateriaA
 //Professor adiciona atividade
 Route::get('/addConteudo',[ProfessorController::class, 'addCont'])->name('addConteudo');
 
+//Rota da Atividade
+Route::get('/startQuiz',[UsuarioController::class, 'QuizAti'])->name('QuizAti');
+
+
 //tela de visualização de atividades
 Route::get('/atvAluno',[UsuarioController::class, 'atividade'])->name('atvAluno');
 

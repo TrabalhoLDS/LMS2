@@ -39,8 +39,8 @@ class ProfessorController extends Controller
     {
        return view('prof.notas');
     }
-
-
+    
+ 
   
 
 

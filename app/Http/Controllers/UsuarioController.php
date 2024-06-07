@@ -22,6 +22,13 @@ class UsuarioController extends Controller
         return view('aluno.atvAluno');
     }
 
+
+//Aluno
+public function QuizAti()
+{
+   return view('aluno.Quiz');
+}
+
     public function quiz()
     {
         return view('aluno.quizAluno');
@@ -91,4 +98,6 @@ class UsuarioController extends Controller
     {
         //
     }
+
+
 }
