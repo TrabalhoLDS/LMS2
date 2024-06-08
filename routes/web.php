@@ -35,7 +35,7 @@ Route::resource('users', UsuarioController::class);
 Route::get('/materiasProf',[ProfessorController::class, 'index'])->name('materiasProf');
 
 //Página onde o professor adiciona matérias
-Route::get('/addMateria',[ProfessorController::class, 'add'])->name('addMateria');
+Route::get('/addMateria',[ProfessorController::class, 'add'])->name('addMateria')->middleware('auth:admin');
 
 //Página onde o professor adiciona aulas
 Route::get('/addAula',[ProfessorController::class, 'add1'])->name('addAula');
@@ -50,7 +50,7 @@ Route::get('/notas',[ProfessorController::class, 'notas'])->name('notas');
 Route::get('/materia',[ProfessorController::class, 'materia'])->name('materia');
 
 //ADM adiciona matéria
-Route::get('/addMateriaADM',[AdminController::class, 'addM'])->name('addMateriaADM');
+Route::get('/addMateriaADM',[AdminController::class, 'addM'])->name('addMateriaADM')->middleware('auth:admin');
 
 //Professor adiciona atividade
 Route::get('/addConteudo',[ProfessorController::class, 'addCont'])->name('addConteudo');
