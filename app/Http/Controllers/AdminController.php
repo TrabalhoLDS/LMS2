@@ -89,7 +89,16 @@ class AdminController extends Controller
 
     public function addM()
     {
-        return view('admin.addMateriaADM');
+        
+        if (Auth::id()) {
+
+            $usertype = Auth()->user()->usertype;
+
+           if ($usertype == 'admin')
+            {
+          return view('admin.addMateriaADM');
+        }
+    }
     }
 
 

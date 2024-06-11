@@ -66,10 +66,5 @@ class Kernel extends HttpKernel
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
     ];
 
-    // adicionado para atutenticação da rota
-    protected $routeMiddleware = [
-        // Outros middlewares...
-        'isAdmin' => \App\Http\Middleware\IsAdmin::class,
-    ];
     
 }

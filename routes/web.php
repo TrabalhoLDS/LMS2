@@ -50,7 +50,7 @@ Route::get('/notas',[ProfessorController::class, 'notas'])->name('notas');
 Route::get('/materia',[ProfessorController::class, 'materia'])->name('materia');
 
 //ADM adiciona matéria
-Route::get('/addMateriaADM',[AdminController::class, 'addM'])->name('addMateriaADM')->middleware('auth:admin');
+Route::get('/addMateriaADM',[AdminController::class, 'addM'])->name('addMateriaADM');
 
 //Professor adiciona atividade
 Route::get('/addConteudo',[ProfessorController::class, 'addCont'])->name('addConteudo');
