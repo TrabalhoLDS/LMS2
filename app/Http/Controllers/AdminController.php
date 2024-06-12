@@ -140,4 +140,9 @@ class AdminController extends Controller
         //dd($usuarios);
         return view('admin.subjects', ['subjects' => $subjects]);
     }
+
+    public function addTurma()
+    {
+        return view('admin.addTurma');
+    }
 }

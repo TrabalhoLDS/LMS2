@@ -75,3 +75,5 @@ Route::get('/subjectuser', [SubjectUserController::class, 'index'])->name('subje
 
 //rota de crud para professor contendo os metodos basicos do crud (criar, update, deletar, storage)
 Route::resource('professores', 'ProfessorController');
+
+Route::get('/addTurma',[AdminController::class, 'addTurma'])->name('addTurma');
