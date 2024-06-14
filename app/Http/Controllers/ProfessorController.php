@@ -6,25 +6,43 @@ use App\Http\Requests\StoreProfessorRequest;
 use App\Http\Requests\UpdateProfessorRequest;
 use App\Models\Professor;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ProfessorController extends Controller
 {
-    
-   //    public function index()
-  //  {
-///return view('prof.materiasProf');
-  //  }
-      //Adicionar matéria
-    public function add()
+
+
+    public function index()
     {
-        return view('prof.addMateria');
+        if (Auth::id()) {
+
+            $usertype = Auth()->user()->usertype;
+
+            if ($usertype == 'prof') {
+                $professores = Professor::all();
+                return view('prof.index', compact('professores'));
+                //retorna contprof.blade dentro de componentes que é a tabela turmar que deve conter id e nome
+                //para juntar as informações devemos fazer uma espécie de join. Exemplo professores da turma de matemárica. A tabela professor
+                //devera conter um id com a turma de cada um. assim também para aluno e etc
+            } else {
+                return view('auth.login');
+            }   
+        }
     }
-      //Adicionar aula
-    public function add1()
+
+
+    public function addAula()
     {
-        return view('prof.addAula');
+        if (Auth::id()) {
+            $usertype = Auth()->user()->usertype;
+
+            if ($usertype == 'prof') {
+                return view('prof.addAula');
+            }
+        }
     }
-    
+
+
     public function materia()
     {
         return view('prof.materia');
@@ -32,22 +50,12 @@ class ProfessorController extends Controller
 
     public function boletim()
     {
-       return view('prof.boletim');
+        return view('prof.boletim');
     }
 
     public function notas()
     {
-       return view('prof.notas');
-    }
-    
- 
-  
-
-
-    public function index()
-    {
-        $professores = Professor::all();
-        return view('professores.index', compact('professores'));
+        return view('prof.notas');
     }
 
     public function create()
@@ -94,7 +102,4 @@ class ProfessorController extends Controller
 
         return redirect('/professores');
     }
-
-  
-
 }

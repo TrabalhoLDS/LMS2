@@ -8,6 +8,15 @@ use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 class SubjectUserController extends Controller
 {
+
+    public function index()
+    {
+        $users = Usuario::all();
+        $subjects = Subject::all();
+        return view('admin.subjectuser', compact('users', 'subjects'));
+    }
+
+
     public function store(Request $request)
     {
         try {
@@ -27,13 +36,6 @@ class SubjectUserController extends Controller
         $user->subjects()->detach($request->subjects);
 
         return redirect()->back()->with('success', 'Vínculo removido com sucesso!');
-    }
-
-    public function index()
-    {
-        $users = Usuario::all();
-        $subjects = Subject::all();
-        return view('admin.subjectuser', compact('users', 'subjects'));
     }
 
 
