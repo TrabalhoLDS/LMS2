@@ -145,4 +145,13 @@ class AdminController extends Controller
     {
         return view('admin.addTurma');
     }
+    public function viewTurma()
+    {
+        return view('admin.viewTurma');
+    }
+
+    public function TurmaAprofundado()
+    {
+        return view('admin.TurmaAprofundado');
+    }
 }

@@ -24,6 +24,11 @@ Route::get('/', function () {
 // o nome da rota é home
 Route::get('/home',[AdminController::class, 'index'])->name('home');
 
+Route::get('/TurmaAprofundado',[AdminController::class, 'TurmaAprofundado'])->name('TurmaAprofundado');
+
+// o nome da rota é home
+Route::get('/viewTurma',[AdminController::class, 'viewTurma'])->name('viewTurma');
+
 //rota para a pesquisa de usuários na tela do administrador
 Route::get('/users/search', [AdminController::class, 'search'])->name('users.search');
 
