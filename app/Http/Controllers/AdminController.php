@@ -89,7 +89,16 @@ class AdminController extends Controller
 
     public function addM()
     {
-        return view('admin.addMateriaADM');
+        
+        if (Auth::id()) {
+
+            $usertype = Auth()->user()->usertype;
+
+           if ($usertype == 'admin')
+            {
+          return view('admin.addMateriaADM');
+        }
+    }
     }
 
 
@@ -130,5 +139,19 @@ class AdminController extends Controller
         $subjects = Subject::all(); // Obtém todos os usuários do banco de dados
         //dd($usuarios);
         return view('admin.subjects', ['subjects' => $subjects]);
+    }
+
+    public function addTurma()
+    {
+        return view('admin.addTurma');
+    }
+    public function viewTurma()
+    {
+        return view('admin.viewTurma');
+    }
+
+    public function TurmaAprofundado()
+    {
+        return view('admin.TurmaAprofundado');
     }
 }

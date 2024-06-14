@@ -24,6 +24,11 @@ Route::get('/', function () {
 // o nome da rota é home
 Route::get('/home',[AdminController::class, 'index'])->name('home');
 
+Route::get('/TurmaAprofundado',[AdminController::class, 'TurmaAprofundado'])->name('TurmaAprofundado');
+
+// o nome da rota é home
+Route::get('/viewTurma',[AdminController::class, 'viewTurma'])->name('viewTurma');
+
 //rota para a pesquisa de usuários na tela do administrador
 Route::get('/users/search', [AdminController::class, 'search'])->name('users.search');
 
@@ -35,7 +40,7 @@ Route::resource('users', UsuarioController::class);
 Route::get('/materiasProf',[ProfessorController::class, 'index'])->name('materiasProf');
 
 //Página onde o professor adiciona matérias
-Route::get('/addMateria',[ProfessorController::class, 'add'])->name('addMateria');
+Route::get('/addMateria',[ProfessorController::class, 'add'])->name('addMateria')->middleware('auth:admin');
 
 //Página onde o professor adiciona aulas
 Route::get('/addAula',[ProfessorController::class, 'add1'])->name('addAula');
@@ -75,3 +80,5 @@ Route::get('/subjectuser', [SubjectUserController::class, 'index'])->name('subje
 
 //rota de crud para professor contendo os metodos basicos do crud (criar, update, deletar, storage)
 Route::resource('professores', 'ProfessorController');
+
+Route::get('/addTurma',[AdminController::class, 'addTurma'])->name('addTurma');
