@@ -13,8 +13,7 @@ class SubjectUserController extends Controller
         try {
             $usuario = Usuario::findOrFail($request->usuario_id);
             $usuario->subjects()->sync($request->subjects);
-
-            return response()->json(['success' => 'Matérias vinculadas com sucesso!']);
+            return response()->json(['success' => 'Matérias vinculadas com sucesso!']);            
         } catch (ModelNotFoundException $e) {
             return response()->json(['error' => 'Usuário não encontrado.'], 404);
         } catch (\Exception $e) {

@@ -11,6 +11,18 @@ class ExampleTest extends TestCase
     public function test_that_true_is_true(): void
     {
         $this->assertTrue(true);
+
+        test('basic request', function () {
+            $response = $this->get('/');
+         
+            $response->assertStatus(200);
+        });
+
+        test('interacting with the session', function () {
+            $response = $this->withSession(['banned' => false])->get('/login');
+         
+            //
+        });
     }
 
 
@@ -20,6 +32,17 @@ class ExampleTest extends TestCase
         $response = $this->get('/login');
       
         $response->assertStatus(200);
+
+        $response = $this->get('/home');
+      
+        $response->assertStatus(200);
+
+        
+
+
+        
+
+    
     } 
 
 
