@@ -9,6 +9,7 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Database\Eloquent\Model;
 
 class User extends Authenticatable
 {
@@ -17,14 +18,26 @@ class User extends Authenticatable
     use HasProfilePhoto;
     use Notifiable;
     use TwoFactorAuthenticatable;
+    use HasFactory, Notifiable;
 
+    // Define a relação com turmas como professor
+    public function turmasComoProfessor()
+    {
+        return $this->belongsToMany(Turma::class, 'professor_turma', 'user_id', 'turma_id');
+    }
+
+    // Define a relação com turmas como aluno
+    public function turmasComoAluno()
+    {
+        return $this->belongsToMany(Turma::class, 'aluno_turma', 'user_id', 'turma_id');
+    }
 
     public function test_models_can_be_instantiated(): void
-{
-    $user = User::factory()->create();
- 
-    // ...
-}
+    {
+        $user = User::factory()->create();
+
+        // ...
+    }
 
     /**
      * The attributes that are mass assignable.
@@ -68,7 +81,7 @@ class User extends Authenticatable
         'profile_photo_url',
     ];
 
-     /**
+    /**
      * Scope a query to only include professors.
      *
      * @param  \Illuminate\Database\Eloquent\Builder  $query
