@@ -3,18 +3,21 @@
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests\UpdateMateriaRequest;
-use App\Models\Materia;
+use App\Models\subject;
 
 class MateriaController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
-    {
-        //
-    }
 
+     public function index()
+     {
+        $subjects = Subject::all(); // Obter todas as matérias
+         return view('contAluno', compact('subjects')); // Passar as matérias para a view
+     }
+
+   
     /**
      * Show the form for creating a new resource.
      */

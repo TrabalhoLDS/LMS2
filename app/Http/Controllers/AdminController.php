@@ -129,6 +129,13 @@ class AdminController extends Controller
         // Salve a nova matéria no banco de dados
         $subject->save();
 
+        // Recuperar a instância da matéria criada 
+        $materiaCriada = Subject::find($subject->id); // 'id' é a chave primária
+
+        return redirect()->route('contAluno', ['materia' => $materiaCriada]); //  'contAluno' é um nome de rota
+
+
+
         // Redirecione para alguma página após a criação da matéria
         return response()->json(['success' => 'Matéria criada com sucesso!' . $subject]);
         // Crie uma nova instância do modelo Subject e atribua os valores dos campos

@@ -77,3 +77,7 @@ Route::middleware(['auth', 'aluno:admin,user'])->group(function () {
     Route::post('/subjectuser2', [SubjectUserController::class, 'store'])->name('subjectuser.vincular');
     Route::get('/subjectuser', [SubjectUserController::class, 'index'])->name('subjectuser');
 });
+
+
+// user 
+Route::get('/contAluno', [MateriaController::class, 'index']);
