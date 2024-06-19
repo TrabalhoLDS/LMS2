@@ -9,6 +9,15 @@ class Turma extends Model
 {
     use HasFactory;
 
+
+    protected $table = 'turmas';
+
+
+    protected $fillable = [
+        'nome',
+    ];
+
+
     // Define a relação com usuários como professores
     public function professores()
     {

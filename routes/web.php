@@ -3,6 +3,7 @@
 use App\Http\Controllers\SubjectUserController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\MateriaController;
 use App\Http\Controllers\ProfessorController;
 use App\Http\Controllers\UsuarioController;
 /*

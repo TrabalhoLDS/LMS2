@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests\UpdateMateriaRequest;
+use App\Models\Materia;
 use App\Models\subject;
 
 class MateriaController extends Controller

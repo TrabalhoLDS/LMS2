@@ -9,7 +9,7 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 
 
 
-uses(RefreshDatabase::class);
+uses(RefreshDatabaseState::class);
  
 test('basic example', function () {
     $response = $this->get('/login');
@@ -22,7 +22,7 @@ test('basic example', function () {
 $this->assertDatabaseCount('users', 5);  // Aferir que uma tabela no banco de dados contém o número de registros dado como no exempo o "5":
 $this->assertDatabaseHas('users', [  'email' => 'sally@example.com',]); // confere um registro correspondete ao que foi informado 
 
-trait RefreshDatabase
+trait refreshTestDatabase
 {
     use CanConfigureMigrationCommands;
 

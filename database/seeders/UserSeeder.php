@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Foundation\Testing\RefreshDatabase;  // linha relacionada ao teste do bd localizado em : /vendor/laravel/framework/src/Illuminate/Foundation/Testing/RefreshDatabase.php
+use Illuminate\Foundation\Testing\RefreshDatabaseState;
 
 class UserSeeder extends Seeder
 {
@@ -17,7 +18,7 @@ class UserSeeder extends Seeder
     }
 }
 
-uses(RefreshDatabase::class);
+uses(RefreshDatabaseState::class);
  
 test('dados podem ser criados', function () {
     // executando o DatabaseSeeder...

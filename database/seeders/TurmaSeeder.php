@@ -15,9 +15,9 @@ class TurmaSeeder extends Seeder
     public function run()
     {
         DB::table('turmas')->insert([
-            ['nome' => 'Matemática 101', 'created_at' => now(), 'updated_at' => now()],
-            ['nome' => 'Física 101', 'created_at' => now(), 'updated_at' => now()],
-            ['nome' => 'Química 101', 'created_at' => now(), 'updated_at' => now()],
+            ['nome' => '1º Ensino Médio', 'created_at' => now(), 'updated_at' => now()],
+            ['nome' => '2º Ensino Médio', 'created_at' => now(), 'updated_at' => now()],
+            ['nome' => '3º Ensino Médio', 'created_at' => now(), 'updated_at' => now()],
             // Adicione mais registros conforme necessário
         ]);
     }

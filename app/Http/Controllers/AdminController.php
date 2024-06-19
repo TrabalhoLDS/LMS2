@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Subject;
+use App\Models\Turma;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -33,7 +34,12 @@ class AdminController extends Controller
                 // dd($usuarios); // Verifica os dados antes de passá-los para a view
                 return view('admin.index', compact('usuarios'));
             } else if ($usertype == 'prof') {
-                return view('prof.index');
+
+                $turmas = Turma::all();
+        
+                // Passar os posts para a view
+                return view('prof.index', compact('turmas'));
+
             } else {
                 return redirect()->back();
             }

@@ -89,6 +89,11 @@
           </span>
         </a>
       </li>
+      @foreach($turmas as $turma)
+    <li>
+        <h2>{{ $turma->nome }}</h2>
+    </li>
+@endforeach
       <!-- Outras turmas -->
     </ul>
   </div>
