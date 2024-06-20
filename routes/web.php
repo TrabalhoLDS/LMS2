@@ -1,10 +1,8 @@
 <?php
 
-use App\Http\Controllers\SubjectUserController;
 use App\Http\Controllers\TurmaController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
-use App\Http\Controllers\MateriaController;
 use App\Http\Controllers\ProfessorController;
 use App\Http\Controllers\UsuarioController;
 /*
@@ -78,6 +76,3 @@ Route::middleware(['auth', 'aluno:admin,user'])->group(function () {
     Route::get('/quizAluno', [UsuarioController::class, 'quiz'])->name('quizAluno');
     });
 
-
-// user
-Route::get('/contAluno', [MateriaController::class, 'index']);
