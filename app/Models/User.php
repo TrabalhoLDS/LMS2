@@ -20,24 +20,6 @@ class User extends Authenticatable
     use TwoFactorAuthenticatable;
     use HasFactory, Notifiable;
 
-    // Define a relação com turmas como professor
-    public function turmasComoProfessor()
-    {
-        return $this->belongsToMany(Turma::class, 'professor_turma', 'user_id', 'turma_id');
-    }
-
-    // Define a relação com turmas como aluno
-    public function turmasComoAluno()
-    {
-        return $this->belongsToMany(Turma::class, 'aluno_turma', 'user_id', 'turma_id');
-    }
-
-    public function test_models_can_be_instantiated(): void
-    {
-        $user = User::factory()->create();
-
-        // ...
-    }
 
     /**
      * The attributes that are mass assignable.
@@ -62,6 +44,26 @@ class User extends Authenticatable
         'two_factor_recovery_codes',
         'two_factor_secret',
     ];
+
+    // Define a relação com turmas como professor
+    public function turmasComoProfessor()
+    {
+        return $this->belongsToMany(Turma::class, 'professor_turma', 'user_id', 'turma_id');
+    }
+
+    // Define a relação com turmas como aluno
+    public function turmasComoAluno()
+    {
+        return $this->belongsToMany(Turma::class, 'aluno_turma', 'user_id', 'turma_id');
+    }
+
+    public function test_models_can_be_instantiated(): void
+    {
+        $user = User::factory()->create();
+
+        // ...
+    }
+
 
     /**
      * The attributes that should be cast.
