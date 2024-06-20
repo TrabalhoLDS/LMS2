@@ -17,7 +17,6 @@ class Turma extends Model
         'nome',
     ];
 
-
     // Define a relação com usuários como professores
     public function professores()
     {

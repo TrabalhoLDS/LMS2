@@ -36,7 +36,7 @@ class AdminController extends Controller
             } else if ($usertype == 'prof') {
 
                 $turmas = Turma::all();
-        
+
                 // Passar os posts para a view
                 return view('prof.index', compact('turmas'));
 
@@ -95,7 +95,7 @@ class AdminController extends Controller
 
     public function addM()
     {
-        
+
         if (Auth::id()) {
 
             $usertype = Auth()->user()->usertype;
@@ -107,64 +107,45 @@ class AdminController extends Controller
     }
     }
 
-
-    public function attachUserToSubject($userId, $subjectId)
-    {
-        $user = Usuario::find($userId);
-        $subject = Subject::find($subjectId);
-
-        $user->subjects()->attach($subjectId);
-
-        return redirect()->back()->with('success', 'Usuário vinculado à matéria com sucesso!');
-    }
-
     public function store(Request $request)
     {
 
 
         $validatedData = $request->validate([
-            'name' => 'required|string|max:255',
+            'nome' => 'required|string|max:255',
             // Adicione mais regras de validação conforme necessário para outros campos
         ]);
 
         // Crie uma nova instância do modelo Subject e atribua os valores dos campos
-        $subject = new Subject();
-        $subject->name = $validatedData['name'];
+        $turma = new Turma();
+        $turma->nome = $validatedData['nome'];
         // Atribua outros campos conforme necessário
 
         // Salve a nova matéria no banco de dados
-        $subject->save();
+        $turma->save();
 
-        // Recuperar a instância da matéria criada 
-        $materiaCriada = Subject::find($subject->id); // 'id' é a chave primária
-
-        return redirect()->route('contAluno', ['materia' => $materiaCriada]); //  'contAluno' é um nome de rota
-
-
+        // Recuperar a instância da matéria criada
 
         // Redirecione para alguma página após a criação da matéria
-        return response()->json(['success' => 'Matéria criada com sucesso!' . $subject]);
+        return response()->json(['success' => 'Turma criada com sucesso!' . $turma]);
         // Crie uma nova instância do modelo Subject e atribua os valores dos campos
     }
 
-    public function subject()
-    {
-        $subjects = Subject::all(); // Obtém todos os usuários do banco de dados
-        //dd($usuarios);
-        return view('admin.subjects', ['subjects' => $subjects]);
-    }
 
     public function addTurma()
     {
         return view('admin.addTurma');
     }
-    public function viewTurma()
-    {
-        return view('admin.viewTurma');
-    }
 
     public function TurmaAprofundado()
     {
         return view('admin.TurmaAprofundado');
+    }
+
+    public function viewTurma()
+    {
+        $turmas = Turma::all(); // Recupera todas as turmas
+
+        return view('admin.viewTurma', ['turmas' => $turmas]);
     }
 }

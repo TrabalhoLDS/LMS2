@@ -50,25 +50,7 @@
       @csrf
       <div class="form-group">
         <label for="nomeTurma">Nome da turma:</label>
-        <input type="text" class="form-control" id="nomeTurma" name="name" placeholder="Digite o nome da turma">
-      </div>
-      <div class="form-group form-inline">
-        <label for="nivelUsuario" class="mr-2">Selecionar Professor:</label>
-        <select class="form-control" id="nivelUsuario" name="nivelUsuario">
-          <option value="" selected disabled hidden>Selecione</option>
-          <option value="admin">Administrador</option>
-          <option value="prof">Professor</option>
-          <option value="user">Aluno</option>
-        </select>
-      </div>
-      <div class="form-group form-inline">
-        <label for="nivelMateria" class="mr-2">Selecionar Matéria:</label>
-        <select class="form-control" id="nivelMateria" name="nivelMateria">
-          <option value="" selected disabled hidden>Selecione</option>
-          <option value="matematica">Matemática</option>
-          <option value="portugues">Português</option>
-          <option value="historia">História</option>
-        </select>
+        <input type="text" class="form-control" id="nomeTurma" name="nome" placeholder="Digite o nome da turma">
       </div>
       <button type="submit" class="btn btn-adicionar">Adicionar</button>
     </form>

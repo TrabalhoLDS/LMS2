@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\SubjectUserController;
+use App\Http\Controllers\TurmaController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\MateriaController;
@@ -75,10 +76,8 @@ Route::middleware(['auth', 'aluno:admin,user'])->group(function () {
     Route::get('/atvAluno', [UsuarioController::class, 'atividade'])->name('atvAluno');
     //tela de visualização de atividades
     Route::get('/quizAluno', [UsuarioController::class, 'quiz'])->name('quizAluno');
-    Route::post('/subjectuser2', [SubjectUserController::class, 'store'])->name('subjectuser.vincular');
-    Route::get('/subjectuser', [SubjectUserController::class, 'index'])->name('subjectuser');
-});
+    });
 
 
-// user 
+// user
 Route::get('/contAluno', [MateriaController::class, 'index']);

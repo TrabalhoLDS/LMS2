@@ -3,11 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Adicionar Turma</title>
-  
+  <title>Visualizar Turmas</title>
+
   <!-- Adicionando Bootstrap CSS -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-  
+
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -58,28 +58,20 @@
   </style>
 </head>
 <body>
-  <div class="container">
-    <h2 class="titulo">Turma</h2>
-    
-    <ul class="materias">
-      <li class="materia">
-      <a href="TurmaAprofundado">Visualizar Turma</a>
-          <h3>Matemática</h3>
-          <p>1° Ensino Médio</p>
-        </a> 
-      </li>
-    </ul>
-  </div>
+    <div class="container">
+        <h2 class="titulo">Turmas</h2>
 
-  <!-- Adicionando Bootstrap JS -->
-  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-  <script>
-    function adicionarMateria() {
-      alert("Função para adicionar matéria aqui!");
-      // Implemente aqui a lógica para adicionar novas matérias
-    }
-  </script>
+        <ul class="materias">
+            @foreach($turmas as $turma)
+            <li class="materia">
+                <a href=""><h3>{{ $turma->nome }}</h3></a>
+            </li>
+            @endforeach
+        </ul>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>
