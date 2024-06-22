@@ -9,12 +9,19 @@ class Professor extends Model
 {
     use HasFactory;
 
+
     /**
      * The table associated with the model.
      *
      * @var string
      */
     protected $table = 'professors';
+
+    protected $fillable = [
+        'user_id',
+        'name',
+        // Adicione outros campos conforme necessário
+    ];
 
     /** Para acessar professor
      * php
@@ -26,7 +33,18 @@ class Professor extends Model
     public function user()
     {
         return $this->belongsTo(User::class);
-    }   
-    
-}
+    }
 
+    // Relacionamento muitos-para-muitos com Atividade através da tabela pivô atividade_professor_turma
+    public function atividades()
+    {
+        return $this->belongsToMany(Atividade::class, 'atividade_professor_turma', 'id_professor', 'id_atividade')
+            ->withPivot('id_turma');
+    }
+
+    // Relacionamento muitos-para-muitos com Turma através da tabela pivô professor_turma
+    public function turmas()
+    {
+        return $this->belongsToMany(Turma::class, 'professor_turma', 'id_professor', 'id_turma');
+    }
+}

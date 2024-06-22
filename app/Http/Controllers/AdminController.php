@@ -39,7 +39,6 @@ class AdminController extends Controller
 
                 // Passar os posts para a view
                 return view('prof.index', compact('turmas'));
-
             } else {
                 return redirect()->back();
             }
@@ -48,28 +47,28 @@ class AdminController extends Controller
 
     public function search(Request $request)
     {
-        if($request->ajax()) {
+        if ($request->ajax()) {
             $query = $request->get('search');
-            if($query != '') {
-                $usuarios = Usuario::where('name', 'like', '%'.$query.'%')
-                            ->orWhere('email', 'like', '%'.$query.'%')
-                            ->get();
+            if ($query != '') {
+                $usuarios = Usuario::where('name', 'like', '%' . $query . '%')
+                    ->orWhere('email', 'like', '%' . $query . '%')
+                    ->get();
             } else {
                 $usuarios = Usuario::all();
             }
 
             $output = '';
-            if($usuarios->count() > 0) {
-                foreach($usuarios as $user) {
+            if ($usuarios->count() > 0) {
+                foreach ($usuarios as $user) {
                     $output .= '
                     <div class="d-flex align-items-center justify-content-between">
                         <div class="d-flex align-items-center">
                             <img src="./img/Foto_Bruno.jpg" id="Imagem Bruno" class="mr-3 same-size-img">
-                            <p class="p">'.$user->name.'</p>
+                            <p class="p">' . $user->name . '</p>
                         </div>
                         <div>
-                            <form id="formAtualizarUsuario" action="'.route('users.update', ['user'=>$user->id]).'" method="POST">
-                                '.csrf_field().'
+                            <form id="formAtualizarUsuario" action="' . route('users.update', ['user' => $user->id]) . '" method="POST">
+                                ' . csrf_field() . '
                                 <input type="hidden" name="_method" value="PUT">
                                 <select class="form-control" id="nivelUsuario" name="nivelUsuario">
                                     <option value="" selected disabled hidden>Selecione</option>
@@ -100,11 +99,10 @@ class AdminController extends Controller
 
             $usertype = Auth()->user()->usertype;
 
-           if ($usertype == 'admin')
-            {
-          return view('admin.addMateriaADM');
+            if ($usertype == 'admin') {
+                return view('admin.addMateriaADM');
+            }
         }
-    }
     }
 
     public function store(Request $request)
@@ -149,3 +147,15 @@ class AdminController extends Controller
         return view('admin.viewTurma', ['turmas' => $turmas]);
     }
 }
+
+
+/* 
+PARA ATUALIZAR 
+event(new AtualizaTipoUsuario($user, $newRole));
+
+        // Dispara o evento para atualizar o perfil
+        AtualizaTipoUsuario::dispatch($user, $newRole);
+
+        return response()->json(['message' => 'User role updated successfully.']);
+   
+ */

@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreProfessorRequest;
 use App\Http\Requests\UpdateProfessorRequest;
+use App\Models\Atividade;
 use App\Models\Professor;
+use App\Models\Turma;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -26,7 +28,7 @@ class ProfessorController extends Controller
                 //devera conter um id com a turma de cada um. assim também para aluno e etc
             } else {
                 return view('auth.login');
-            }   
+            }
         }
     }
 
@@ -51,6 +53,19 @@ class ProfessorController extends Controller
                 return view('prof.addAtividade');
             }
         }
+    }
+
+    // Relacionamento muitos-para-muitos com Atividade através da tabela pivô atividade_professor_turma
+    public function atividades()
+    {
+        return $this->belongsToMany(Atividade::class, 'atividade_professor_turma', 'id_professor', 'id_atividade')
+            ->withPivot('id_turma');
+    }
+
+    // Relacionamento muitos-para-muitos com Turma através da tabela pivô professor_turma
+    public function turmas()
+    {
+        return $this->belongsToMany(Turma::class, 'professor_turma', 'id_professor', 'id_turma');
     }
 
 

@@ -73,6 +73,10 @@ class Kernel extends HttpKernel
         'aluno' => \App\Http\Middleware\CheckAluno::class,
     ];
     
+    protected $commands = [
+        \App\Console\Commands\ImportProfessors::class,
+    ];
+    
 
     
 }
