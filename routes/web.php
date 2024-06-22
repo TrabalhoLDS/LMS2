@@ -27,10 +27,10 @@ Route::get('/', function () {
 Route::get('/home', [AdminController::class, 'index'])->name('home');
 
 
-Route::get('/TurmaAprofundado',[AdminController::class, 'TurmaAprofundado'])->name('TurmaAprofundado');
+Route::get('/TurmaAprofundado', [AdminController::class, 'TurmaAprofundado'])->name('TurmaAprofundado');
 
 // o nome da rota é home
-Route::get('/viewTurma',[AdminController::class, 'viewTurma'])->name('viewTurma');
+Route::get('/viewTurma', [AdminController::class, 'viewTurma'])->name('viewTurma');
 
 //rota para a pesquisa de usuários na tela do administrador
 Route::middleware(['auth', 'admin:admin'])->group(function () {
@@ -51,6 +51,8 @@ Route::middleware(['auth', 'prof'])->group(function () {
     Route::get('/materiasProf', [ProfessorController::class, 'index'])->name('materiasProf');
     //Página onde o professor adiciona aulas
     Route::get('/addAula', [ProfessorController::class, 'addAula'])->name('addAula');
+    //Página onde o professor adiciona aulas
+    Route::get('/addAtividade', [ProfessorController::class, 'addAtividade'])->name('addAtividade');
     //Página onde o professor visualiza a lista de alunos
     Route::get('/boletim', [ProfessorController::class, 'boletim'])->name('boletim');
     //Página onde o professor vizualiza as notas
@@ -74,5 +76,4 @@ Route::middleware(['auth', 'aluno:admin,user'])->group(function () {
     Route::get('/atvAluno', [UsuarioController::class, 'atividade'])->name('atvAluno');
     //tela de visualização de atividades
     Route::get('/quizAluno', [UsuarioController::class, 'quiz'])->name('quizAluno');
-    });
-
+});

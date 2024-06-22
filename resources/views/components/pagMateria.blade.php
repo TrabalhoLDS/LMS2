@@ -106,11 +106,19 @@
     <div class="item">
       <h3 class="titulo-secao">
         <a href="addAula">
-          <i class="fas fa-plus-circle"></i> Adicionar Atividade/Aula
+          <i class="fas fa-plus-circle"></i> Adicionar Aula
         </a>
       </h3>
     </div>
 
+    <div class="item">
+      <h3 class="titulo-secao">
+        <a href="addAula">
+          <i class="fas fa-plus-circle"></i> Adicionar Atividade
+        </a>
+      </h3>
+    </div>
+    
     <div class="item">
       <h3 class="titulo-secao">
         <a href="boletim">

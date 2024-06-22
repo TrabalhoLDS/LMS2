@@ -42,6 +42,17 @@ class ProfessorController extends Controller
         }
     }
 
+    public function addAtividade()
+    {
+        if (Auth::id()) {
+            $usertype = Auth()->user()->usertype;
+
+            if ($usertype == 'prof') {
+                return view('prof.addAtividade');
+            }
+        }
+    }
+
 
     public function materia()
     {
