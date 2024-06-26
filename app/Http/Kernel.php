@@ -65,4 +65,18 @@ class Kernel extends HttpKernel
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
     ];
+
+    protected $routeMiddleware = [
+        // Outros middlewares
+        'prof' => \App\Http\Middleware\CheckProfessor::class,
+        'admin' => \App\Http\Middleware\CheckAdministrador::class,
+        'aluno' => \App\Http\Middleware\CheckAluno::class,
+    ];
+    
+    protected $commands = [
+        \App\Console\Commands\ImportProfessors::class,
+    ];
+    
+
+    
 }

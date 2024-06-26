@@ -2,7 +2,6 @@
 
 namespace Database\Seeders;
 
-// use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
@@ -15,30 +14,23 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // \App\Models\User::factory(10)->create();
-
-        // \App\Models\User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
-
+        // Inserir um usuário de teste diretamente
         DB::table('users')->insert([
             'name' => Str::random(10),
-            'email' => Str::random(10).'@example.com',
+            'email' => Str::random(10) . '@example.com',
             'password' => Hash::make('password'),
+            'usertype' => 'prof', // Adicione o campo usertype se necessário
+            'created_at' => now(),
+            'updated_at' => now(),
         ]);
 
-         
-        // o comando a seguir popula o banco de dados com usuarios para teste
-        // php artisan db:seed
-        
+        // Criar 10 usuários usando a factory
         \App\Models\User::factory(10)->create();
 
-        // Caso quisessemos colocar a mão
-
-      //   \App\Models\User::factory()->create([
-      //       'name' => 'Test User',
-      //       'email' => 'test@example.com',
-      //   ]);
+        // Chamar seeders adicionais
+        $this->call([
+            TurmaSeeder::class,
+            // Adicione outros seeders aqui
+        ]);
     }
 }

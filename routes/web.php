@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\SubjectUserController;
+use App\Http\Controllers\TurmaController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ProfessorController;
@@ -21,57 +21,59 @@ Route::get('/', function () {
 });
 
 
+//** ADM */
+
 // o nome da rota é home
-Route::get('/home',[AdminController::class, 'index'])->name('home');
+Route::get('/home', [AdminController::class, 'index'])->name('home');
+
+
+Route::get('/TurmaAprofundado', [AdminController::class, 'TurmaAprofundado'])->name('TurmaAprofundado');
+
+// o nome da rota é home
+Route::get('/viewTurma', [AdminController::class, 'viewTurma'])->name('viewTurma');
 
 //rota para a pesquisa de usuários na tela do administrador
-Route::get('/users/search', [AdminController::class, 'search'])->name('users.search');
+Route::middleware(['auth', 'admin:admin'])->group(function () {
+    Route::get('/users/search', [AdminController::class, 'search'])->name('users.search');
+    Route::get('/addMateria', [AdminController::class, 'add'])->name('addMateria');
+    Route::get('/addMateriaADM', [AdminController::class, 'addM'])->name('addMateriaADM');
+    Route::post('/admin/store', [AdminController::class, 'store'])->name('admin.store');
+    Route::get('/addTurma', [AdminController::class, 'addTurma'])->name('addTurma');
+});
 
-Route::get('/subjects',[AdminController::class, 'show'])->name('subjects');
 
-Route::resource('users', UsuarioController::class);
+//*** Professor */
+
+
 
 //Página de matérias do professor
-Route::get('/materiasProf',[ProfessorController::class, 'index'])->name('materiasProf');
-
-//Página onde o professor adiciona matérias
-Route::get('/addMateria',[ProfessorController::class, 'add'])->name('addMateria');
-
-//Página onde o professor adiciona aulas
-Route::get('/addAula',[ProfessorController::class, 'add1'])->name('addAula');
-
-//Página onde o professor visualiza a lista de alunos
-Route::get('/boletim',[ProfessorController::class, 'boletim'])->name('boletim');
-
-//Página onde o professor vizualiza as notas
-Route::get('/notas',[ProfessorController::class, 'notas'])->name('notas');
-
-//Página da matéria escolhida
-Route::get('/materia',[ProfessorController::class, 'materia'])->name('materia');
-
-//ADM adiciona matéria
-Route::get('/addMateriaADM',[AdminController::class, 'addM'])->name('addMateriaADM');
-
-//Professor adiciona atividade
-Route::get('/addConteudo',[ProfessorController::class, 'addCont'])->name('addConteudo');
-
-//Rota da Atividade
-Route::get('/startQuiz',[UsuarioController::class, 'QuizAti'])->name('QuizAti');
-
-
-//tela de visualização de atividades
-Route::get('/atvAluno',[UsuarioController::class, 'atividade'])->name('atvAluno');
-
-//tela de visualização de atividades
-Route::get('/quizAluno',[UsuarioController::class, 'quiz'])->name('quizAluno');
-Route::post('/admin/store',[AdminController::class, 'store'])->name('admin.store');
-
-Route::get('/subject',[AdminController::class, 'subject'])->name('subject');
-
-Route::post('/subjectuser2', [SubjectUserController::class, 'store'])->name('subjectuser.vincular');
-
-Route::get('/subjectuser', [SubjectUserController::class, 'index'])->name('subjectuser');
-
+Route::middleware(['auth', 'prof'])->group(function () {
+    Route::get('/materiasProf', [ProfessorController::class, 'index'])->name('materiasProf');
+    //Página onde o professor adiciona aulas
+    Route::get('/addAula', [ProfessorController::class, 'addAula'])->name('addAula');
+    //Página onde o professor adiciona aulas
+    Route::get('/addAtividade', [ProfessorController::class, 'addAtividade'])->name('addAtividade');
+    //Página onde o professor visualiza a lista de alunos
+    Route::get('/boletim', [ProfessorController::class, 'boletim'])->name('boletim');
+    //Página onde o professor vizualiza as notas
+    Route::get('/notas', [ProfessorController::class, 'notas'])->name('notas');
+    //Página da matéria escolhidalogin
+    Route::get('/materia', [ProfessorController::class, 'materia'])->name('materia');
+    //Professor adiciona atividade
+    Route::get('/addConteudo', [ProfessorController::class, 'addCont'])->name('addConteudo');
+    Route::resource('professores', 'ProfessorController');
+});
 
 //rota de crud para professor contendo os metodos basicos do crud (criar, update, deletar, storage)
-Route::resource('professores', 'ProfessorController');
+
+
+Route::middleware(['auth', 'aluno:admin,user'])->group(function () {
+
+    Route::resource('users', UsuarioController::class);
+    //Rota da Atividade
+    Route::get('/startQuiz', [UsuarioController::class, 'QuizAti'])->name('QuizAti');
+    //tela de visualização de atividades
+    Route::get('/atvAluno', [UsuarioController::class, 'atividade'])->name('atvAluno');
+    //tela de visualização de atividades
+    Route::get('/quizAluno', [UsuarioController::class, 'quiz'])->name('quizAluno');
+});

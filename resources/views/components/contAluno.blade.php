@@ -37,6 +37,10 @@
                             <div class="d-flex align-items-center">
                                 <i class="fas fa-calculator mr-3 blue-icon"></i>
                                 <a href="atvAluno" p class="p">Trigonometria</a>
+
+                                
+
+
                             </div>
                         </div>
                     </div>

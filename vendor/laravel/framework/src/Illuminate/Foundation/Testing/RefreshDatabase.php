@@ -4,8 +4,25 @@ namespace Illuminate\Foundation\Testing;
 
 use Illuminate\Contracts\Console\Kernel;
 use Illuminate\Foundation\Testing\Traits\CanConfigureMigrationCommands;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 
-trait RefreshDatabase
+
+
+
+uses(RefreshDatabaseState::class);
+ 
+test('basic example', function () {
+    $response = $this->get('/login');
+ 
+    // ... realiza teste no /login
+
+
+});
+
+$this->assertDatabaseCount('users', 5);  // Aferir que uma tabela no banco de dados contém o número de registros dado como no exempo o "5":
+$this->assertDatabaseHas('users', [  'email' => 'sally@example.com',]); // confere um registro correspondete ao que foi informado 
+
+trait refreshTestDatabase
 {
     use CanConfigureMigrationCommands;
 
@@ -14,6 +31,9 @@ trait RefreshDatabase
      *
      * @return void
      */
+
+     // usado para criar teste no banco de dados 
+
     public function refreshDatabase()
     {
         $this->beforeRefreshingDatabase();

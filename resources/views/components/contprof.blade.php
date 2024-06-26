@@ -69,9 +69,10 @@
   <div class="container">
     <h2>Turmas</h2>
     <ul class="turmas">
+    @foreach($turmas as $turma)
       <li>
         <a href="materia" class="turma">
-          1º Ensino Médio
+        {{ $turma->nome }}
           <span class="icones">
             <i class="fas fa-chart-bar"></i> <!-- Ícone de estatísticas -->
             <i class="fas fa-edit"></i> <!-- Ícone de editar -->
@@ -79,16 +80,7 @@
           </span>
         </a>
       </li>
-      <li>
-        <a href="materia" class="turma">
-          2º Ensino Médio
-          <span class="icones">
-            <i class="fas fa-chart-bar"></i> <!-- Ícone de estatísticas -->
-            <i class="fas fa-edit"></i> <!-- Ícone de editar -->
-            <i class="fas fa-eye"></i> <!-- Ícone de visualizar -->
-          </span>
-        </a>
-      </li>
+@endforeach
       <!-- Outras turmas -->
     </ul>
   </div>

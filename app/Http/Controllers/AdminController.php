@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Subject;
+use App\Models\Turma;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -33,7 +34,11 @@ class AdminController extends Controller
                 // dd($usuarios); // Verifica os dados antes de passá-los para a view
                 return view('admin.index', compact('usuarios'));
             } else if ($usertype == 'prof') {
-                return view('prof.index');
+
+                $turmas = Turma::all();
+
+                // Passar os posts para a view
+                return view('prof.index', compact('turmas'));
             } else {
                 return redirect()->back();
             }
@@ -42,28 +47,28 @@ class AdminController extends Controller
 
     public function search(Request $request)
     {
-        if($request->ajax()) {
+        if ($request->ajax()) {
             $query = $request->get('search');
-            if($query != '') {
-                $usuarios = Usuario::where('name', 'like', '%'.$query.'%')
-                            ->orWhere('email', 'like', '%'.$query.'%')
-                            ->get();
+            if ($query != '') {
+                $usuarios = Usuario::where('name', 'like', '%' . $query . '%')
+                    ->orWhere('email', 'like', '%' . $query . '%')
+                    ->get();
             } else {
                 $usuarios = Usuario::all();
             }
 
             $output = '';
-            if($usuarios->count() > 0) {
-                foreach($usuarios as $user) {
+            if ($usuarios->count() > 0) {
+                foreach ($usuarios as $user) {
                     $output .= '
                     <div class="d-flex align-items-center justify-content-between">
                         <div class="d-flex align-items-center">
                             <img src="./img/Foto_Bruno.jpg" id="Imagem Bruno" class="mr-3 same-size-img">
-                            <p class="p">'.$user->name.'</p>
+                            <p class="p">' . $user->name . '</p>
                         </div>
                         <div>
-                            <form id="formAtualizarUsuario" action="'.route('users.update', ['user'=>$user->id]).'" method="POST">
-                                '.csrf_field().'
+                            <form id="formAtualizarUsuario" action="' . route('users.update', ['user' => $user->id]) . '" method="POST">
+                                ' . csrf_field() . '
                                 <input type="hidden" name="_method" value="PUT">
                                 <select class="form-control" id="nivelUsuario" name="nivelUsuario">
                                     <option value="" selected disabled hidden>Selecione</option>
@@ -89,18 +94,15 @@ class AdminController extends Controller
 
     public function addM()
     {
-        return view('admin.addMateriaADM');
-    }
 
+        if (Auth::id()) {
 
-    public function attachUserToSubject($userId, $subjectId)
-    {
-        $user = Usuario::find($userId);
-        $subject = Subject::find($subjectId);
+            $usertype = Auth()->user()->usertype;
 
-        $user->subjects()->attach($subjectId);
-
-        return redirect()->back()->with('success', 'Usuário vinculado à matéria com sucesso!');
+            if ($usertype == 'admin') {
+                return view('admin.addMateriaADM');
+            }
+        }
     }
 
     public function store(Request $request)
@@ -108,27 +110,52 @@ class AdminController extends Controller
 
 
         $validatedData = $request->validate([
-            'name' => 'required|string|max:255',
+            'nome' => 'required|string|max:255',
             // Adicione mais regras de validação conforme necessário para outros campos
         ]);
 
         // Crie uma nova instância do modelo Subject e atribua os valores dos campos
-        $subject = new Subject();
-        $subject->name = $validatedData['name'];
+        $turma = new Turma();
+        $turma->nome = $validatedData['nome'];
         // Atribua outros campos conforme necessário
 
         // Salve a nova matéria no banco de dados
-        $subject->save();
+        $turma->save();
+
+        // Recuperar a instância da matéria criada
 
         // Redirecione para alguma página após a criação da matéria
-        return response()->json(['success' => 'Matéria criada com sucesso!' . $subject]);
+        return response()->json(['success' => 'Turma criada com sucesso!' . $turma]);
         // Crie uma nova instância do modelo Subject e atribua os valores dos campos
     }
 
-    public function subject()
+
+    public function addTurma()
     {
-        $subjects = Subject::all(); // Obtém todos os usuários do banco de dados
-        //dd($usuarios);
-        return view('admin.subjects', ['subjects' => $subjects]);
+        return view('admin.addTurma');
+    }
+
+    public function TurmaAprofundado()
+    {
+        return view('admin.TurmaAprofundado');
+    }
+
+    public function viewTurma()
+    {
+        $turmas = Turma::all(); // Recupera todas as turmas
+
+        return view('admin.viewTurma', ['turmas' => $turmas]);
     }
 }
+
+
+/* 
+PARA ATUALIZAR 
+event(new AtualizaTipoUsuario($user, $newRole));
+
+        // Dispara o evento para atualizar o perfil
+        AtualizaTipoUsuario::dispatch($user, $newRole);
+
+        return response()->json(['message' => 'User role updated successfully.']);
+   
+ */

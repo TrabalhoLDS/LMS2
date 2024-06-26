@@ -5,6 +5,6 @@
         </h2>
     </x-slot>
 
-                <x-indexprofessor />
+                <x-indexprofessor :turmas="$turmas" />
             
 </x-app-layout>
