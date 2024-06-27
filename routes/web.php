@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ProfessorController;
 use App\Http\Controllers\UsuarioController;
+use App\Http\Controllers\AtividadeController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -77,3 +78,13 @@ Route::middleware(['auth', 'aluno:admin,user'])->group(function () {
     //tela de visualização de atividades
     Route::get('/quizAluno', [UsuarioController::class, 'quiz'])->name('quizAluno');
 });
+
+
+// pagina das atividades na view contAluno 
+
+Route::get('/contAluno', [AtividadeController::class, 'index'])->name('contAluno');
+Route::get('/atividades/create', [AtividadeController::class, 'create'])->name('atividades.create');
+Route::post('/atividade/store', [AtividadeController::class, 'store'])->name('atividades.store');
+Route::post('/atividades', [AtividadeController::class, 'store'])->name('atividades.store');
+//Route::get('/atividades', [AtividadeController::class, 'index'])->name('atividades.index');
+//Route::get('/home', [AtividadeController::class, 'authenticated'])->name('home');
