@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Subject;
 use App\Models\Turma;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -143,19 +142,23 @@ class AdminController extends Controller
     public function viewTurma()
     {
         $turmas = Turma::all(); // Recupera todas as turmas
+        $professores = Usuario::where('usertype', 'prof')->get();
 
-        return view('admin.viewTurma', ['turmas' => $turmas]);
+        return view('admin.viewTurma', [
+            'turmas' => $turmas,
+            'professores' => $professores,
+        ]);
     }
 }
 
 
-/* 
-PARA ATUALIZAR 
+/*
+PARA ATUALIZAR
 event(new AtualizaTipoUsuario($user, $newRole));
 
         // Dispara o evento para atualizar o perfil
         AtualizaTipoUsuario::dispatch($user, $newRole);
 
         return response()->json(['message' => 'User role updated successfully.']);
-   
+
  */

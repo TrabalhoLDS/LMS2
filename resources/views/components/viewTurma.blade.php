@@ -58,17 +58,42 @@
   </style>
 </head>
 <body>
-    <div class="container">
-        <h2 class="titulo">Turmas</h2>
 
-        <ul class="materias">
-            @foreach($turmas as $turma)
-            <li class="materia">
-                <a href=""><h3>{{ $turma->nome }}</h3></a>
-            </li>
-            @endforeach
-        </ul>
+    <div class="container mt-4">
+        <div class="row justify-content-center">
+                    <hr class="full-width-line">
+                        <div class="centered-names" id="user-list">
+                            <div class="d-flex align-items-center justify-content-between">
+                                <div>
+                                    <form id="formAtualizarUsuario" action="" method="POST">
+                                        @csrf
+                                        <input type="hidden" name="_method" value="PUT">
+                                        <select class="form-control" id="nivelUsuario" name="nivelUsuario">
+                                            <option value="" selected disabled hidden>Selecione</option>
+                                            @foreach($turmas as $turma)
+                                                <option value="{{ $turma->id }}">{{ $turma->nome }}</option>
+                                            @endforeach
+                                        </select>
+                                        <br><br><br><br>
+                                        <select class="form-control" id="nivelUsuario" name="nivelUsuario">
+                                            <option value="" selected disabled hidden>Selecione</option>
+                                            @foreach($professores as $professor)
+                                                <option value="{{ $professor->id }}">{{ $professor->name }}</option>
+                                            @endforeach
+                                        </select>
+                                        <button type="submit">Salvar</button>
+                                    </form>
+                                </div>
+                            </div>
+                            <hr class="full-width-line">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
+
+
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
