@@ -14,6 +14,11 @@
     <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
         <ul class="navbar-nav">
             <li class="nav-item active">
+                <a class="nav-link" href="viewAlunoTurma">Vincular turma aos alunos</a>
+            </li>
+    <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+        <ul class="navbar-nav">
+            <li class="nav-item active">
                 <a class="nav-link" href="viewTurma">Visualizar Turma</a>
             </li>
     <div class="collapse navbar-collapse justify-content-end" id="navbarNav">

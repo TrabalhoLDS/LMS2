@@ -47,4 +47,16 @@ class Professor extends Model
     {
         return $this->belongsToMany(Turma::class, 'professor_turma', 'id_professor', 'id_turma');
     }
+
+    // Método para criar uma nova atividade e vincular à turma
+    public function criarEAssociarAtividade($atividadeData, $turmaId)
+    {
+        // Cria a nova atividade
+        $atividade = Atividade::create($atividadeData);
+
+        // Vincula a atividade ao professor e à turma
+        $this->atividades()->attach($atividade->id, ['id_turma' => $turmaId]);
+
+        return $atividade;
+    }
 }
