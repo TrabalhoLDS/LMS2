@@ -49,6 +49,7 @@ Route::middleware(['auth', 'admin:admin'])->group(function () {
 
 //Página de matérias do professor
 Route::middleware(['auth', 'prof'])->group(function () {
+
     Route::get('/materiasProf', [ProfessorController::class, 'index'])->name('materiasProf');
     //Página onde o professor adiciona aulas
     Route::get('/addAula', [ProfessorController::class, 'addAula'])->name('addAula');
@@ -58,12 +59,14 @@ Route::middleware(['auth', 'prof'])->group(function () {
     Route::get('/boletim', [ProfessorController::class, 'boletim'])->name('boletim');
     //Página onde o professor vizualiza as notas
     Route::get('/notas', [ProfessorController::class, 'notas'])->name('notas');
+
+    Route::get('/addConteudo', [ProfessorController::class, 'addCont'])->name('addConteudo');
+    Route::resource('professores', 'ProfessorController');
     //Página da matéria escolhidalogin
     Route::get('/materia', [ProfessorController::class, 'materia'])->name('materia');
     //Professor adiciona atividade
-    Route::get('/addConteudo', [ProfessorController::class, 'addCont'])->name('addConteudo');
-    Route::resource('professores', 'ProfessorController');
 });
+
 
 //rota de crud para professor contendo os metodos basicos do crud (criar, update, deletar, storage)
 
