@@ -37,5 +37,14 @@ class TurmaController extends Controller
             return redirect()->route('viewTurma')->with('error', 'Erro inesperado: ' . $e->getMessage());
         }
 }
+public function viewAlunoTurma(Request $request)
+{
+    $turmas = Turma::all(); // Recupera todas as turmas
+    $usuarios = Usuario::where('usertype', 'user')->get();
 
+    return view('admin.viewAlunoTurma', [
+        'turmas' => $turmas,
+        'usuarios' => $usuarios,
+    ]);
+}
 }
