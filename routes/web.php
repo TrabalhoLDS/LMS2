@@ -25,6 +25,8 @@ Route::get('/', function () {
 
 // o nome da rota é home
 Route::get('/home', [AdminController::class, 'index'])->name('home');
+Route::post('/vincular-turma-professor', [TurmaController::class, 'vincularTurmaProfessor'])->name('vincular.turma.professor');
+
 
 
 Route::get('/TurmaAprofundado', [AdminController::class, 'TurmaAprofundado'])->name('TurmaAprofundado');
