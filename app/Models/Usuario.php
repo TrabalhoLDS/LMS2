@@ -14,4 +14,9 @@ class Usuario extends Model
     return $this->hasOne(Professor::class);
 }
 
+public function turmas()
+    {
+        return $this->belongsToMany(Turma::class, 'aluno_turma', 'turma_id', 'user_id');
+    }
+
 }

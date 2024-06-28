@@ -24,17 +24,12 @@ class AdminController extends Controller
 
             if ($usertype == 'user') {
 
-                        // $atividades = aula::ordeByDesc('id')-get(); 
+                $atividades = Atividade::all(); // Busca todas as atividades do banco de dados
 
+                // Passa os dados para a view contAluno.blade.php
+                return view('aluno.indexaluno', compact('atividades'));
 
-        $atividades = Atividade::all(); // Busca todas as atividades do banco de dados
-
-        // return view('aluno.contAluno', compact('atividades'));
-
-         // Passa os dados para a view contAluno.blade.php
-         return view('aluno.indexaluno', compact('atividades'));
-         
-         //       return view('aluno.indexaluno');
+                //       return view('aluno.indexaluno');
             } else if ($usertype == 'admin') {
                 // return view('admin.index');
 
