@@ -13,6 +13,12 @@ class AtividadeController extends Controller
 
     }
 
+    public function show($id)
+    {
+        $atividade = Atividade::findOrFail($id);
+        return view('aluno.atvAluno', compact('atividade'));
+    }
+
     protected function authenticated(Request $request, $user)
     {
         $atividades = Atividade::all(); // Busque todas as atividades

@@ -25,16 +25,32 @@
             <div class="card">
                 <div class="card-body">
                     <div class="input-group-prepend">
-                        <div class="col-md-8 text-center d-flex justify-content-center align-items-center">
-                            <h5 class="display-9">Mural de Atividades</h5>
-                            
-                            @foreach ($atividades as $atividade)
-
-                            <li>{{ $atividade->nome }} - {{ $atividade->descricao }}</li>
-                            
-                             @endforeach
-                            
-                        </div>                     
+                    <div class="container mt-4">
+    <div class="row justify-content-center">
+        <div class="col-md-8 mb-4">
+            <div class="card">
+                <div class="card-body text-center">
+                    <h5 class="display-9 mb-4">Mural de Atividades</h5>
+                    
+                    @if($atividades->isEmpty())
+                        <p>Nenhuma atividade encontrada.</p>
+                    @else
+                        <ul class="list-group">
+                        @foreach ($atividades as $atividade)
+                                <li class="list-group-item">
+                                    <a href="{{ route('atividades.show', $atividade->id) }}">
+                                        <strong>{{ $atividade->nome }}</strong>
+                                    </a>
+                                    <p>{{ $atividade->descricao }}</p>
+                                </li>
+                            @endforeach
+                        </ul>
+                    @endif
+                </div>
+            </div>
+        </div>
+    </div>
+</div>       
                     </div>                  
                 </div>
             </div>

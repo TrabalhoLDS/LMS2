@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Atividade;
 use App\Models\Turma;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -159,6 +160,14 @@ class AdminController extends Controller
             'turmas' => $turmas,
             'professores' => $professores,
         ]);
+    }
+
+
+    // mostrar atividade ao aluno ao clicar no link 
+    public function show($id)
+    {
+        $atividade = Atividade::findOrFail($id);
+        return view('aluno.atvAluno', compact('atividade'));
     }
 
 
