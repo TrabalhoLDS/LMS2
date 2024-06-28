@@ -40,11 +40,38 @@ class TurmaController extends Controller
 public function viewAlunoTurma(Request $request)
 {
     $turmas = Turma::all(); // Recupera todas as turmas
-    $usuarios = Usuario::where('usertype', 'user')->get();
+    $alunos = Usuario::where('usertype', 'user')->get();
 
     return view('admin.viewAlunoTurma', [
         'turmas' => $turmas,
-        'usuarios' => $usuarios,
+        'alunos' => $alunos,
     ]);
 }
+
+public function vincularTurmaAluno(Request $request)
+{
+    $request->validate([
+        'user_id' => 'required|exists:users,id',
+        'turma_id' => 'required|exists:turmas,id',
+    ]);
+
+    try {
+        $user = Usuario::findOrFail($request->user_id);
+        $turma = Turma::findOrFail($request->turma_id);
+
+        // Verifica se o usuário já está vinculado a esta turma
+        if ($user->turmas()->where('turma_id', $turma->id)->exists()) {
+            return back()->with('warning', 'Este aluno já está vinculado a esta turma!');
+        }
+
+        // Vincula o usuário à turma
+        $user->turmas()->attach($turma);
+
+        return back()->with('success', 'Aluno vinculado à turma com sucesso!');
+    } catch (\Exception $e) {
+        return back()->with('error', 'Erro ao vincular aluno à turma: ' . $e->getMessage());
+    }
 }
+}
+
+
