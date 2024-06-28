@@ -80,7 +80,7 @@
           </span>
         </a>
       </li>
-@endforeach
+    @endforeach
       <!-- Outras turmas -->
     </ul>
   </div>

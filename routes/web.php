@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ProfessorController;
 use App\Http\Controllers\UsuarioController;
+use App\Http\Controllers\AtividadeController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -50,6 +51,7 @@ Route::middleware(['auth', 'admin:admin'])->group(function () {
 
 //Página de matérias do professor
 Route::middleware(['auth', 'prof'])->group(function () {
+
     Route::get('/materiasProf', [ProfessorController::class, 'index'])->name('materiasProf');
     //Página onde o professor adiciona aulas
     Route::get('/addAula', [ProfessorController::class, 'addAula'])->name('addAula');
@@ -59,12 +61,14 @@ Route::middleware(['auth', 'prof'])->group(function () {
     Route::get('/boletim', [ProfessorController::class, 'boletim'])->name('boletim');
     //Página onde o professor vizualiza as notas
     Route::get('/notas', [ProfessorController::class, 'notas'])->name('notas');
+
+    Route::get('/addConteudo', [ProfessorController::class, 'addCont'])->name('addConteudo');
+    Route::resource('professores', 'ProfessorController');
     //Página da matéria escolhidalogin
     Route::get('/materia', [ProfessorController::class, 'materia'])->name('materia');
     //Professor adiciona atividade
-    Route::get('/addConteudo', [ProfessorController::class, 'addCont'])->name('addConteudo');
-    Route::resource('professores', 'ProfessorController');
 });
+
 
 //rota de crud para professor contendo os metodos basicos do crud (criar, update, deletar, storage)
 
@@ -79,3 +83,13 @@ Route::middleware(['auth', 'aluno:admin,user'])->group(function () {
     //tela de visualização de atividades
     Route::get('/quizAluno', [UsuarioController::class, 'quiz'])->name('quizAluno');
 });
+
+
+// pagina das atividades na view contAluno 
+
+Route::get('/contAluno', [AtividadeController::class, 'index'])->name('contAluno');
+Route::get('/atividades/create', [AtividadeController::class, 'create'])->name('atividades.create');
+Route::post('/atividade/store', [AtividadeController::class, 'store'])->name('atividades.store');
+Route::post('/atividades', [AtividadeController::class, 'store'])->name('atividades.store');
+//Route::get('/atividades', [AtividadeController::class, 'index'])->name('atividades.index');
+//Route::get('/home', [AtividadeController::class, 'authenticated'])->name('home');

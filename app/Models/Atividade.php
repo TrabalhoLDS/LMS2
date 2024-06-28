@@ -9,10 +9,19 @@ class Atividade extends Model
 {
     use HasFactory;
 
-    protected $table = 'atividades';
+    protected $table = 'atividades'; //indica node da tabela no BD
 
-
-    protected $fillable = ['nome', 'descricao']; // Campos que podem ser preenchidos via formulário
+    
+    // Campos que podem ser preenchidos no formulário
+    protected $fillable = [
+        'id',
+        'nome', 
+        'descricao',
+        'dataAbertura',
+        'dataExpiracao',
+        'tipoAtividade',
+        'caminhoArquivo',
+    ];
 
     // Relacionamento muitos-para-muitos com Professor através da tabela pivô atividade_professor_turma
     public function professores()
