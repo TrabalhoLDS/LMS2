@@ -9,10 +9,19 @@ class Atividade extends Model
 {
     use HasFactory;
 
-    protected $table = 'atividades';
+    protected $table = 'atividades'; //indica node da tabela no BD
 
 
-    protected $fillable = ['nome', 'descricao']; // Campos que podem ser preenchidos via formulário
+    // Campos que podem ser preenchidos no formulário
+    protected $fillable = [
+        'id',
+        'nome',
+        'descricao',
+        'dataAbertura',
+        'dataExpiracao',
+        'tipoAtividade',
+        'caminhoArquivo',
+    ];
 
     // Relacionamento muitos-para-muitos com Professor através da tabela pivô atividade_professor_turma
     public function professores()
@@ -21,4 +30,9 @@ class Atividade extends Model
             ->withPivot('id_turma');
     }
 
+    // Relacionamento muitos-para-muitos com Professor através da tabela pivô atividade_professor_turma
+    public function turmas()
+    {
+        return $this->belongsTo(Turma::class, 'turma_atividade', 'id_turma', 'id_atividade');
+    }
 }

@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Subject;
+use App\Models\Atividade;
 use App\Models\Turma;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -23,7 +23,13 @@ class AdminController extends Controller
             $usertype = Auth()->user()->usertype;
 
             if ($usertype == 'user') {
-                return view('aluno.indexaluno');
+
+                $atividades = Atividade::all(); // Busca todas as atividades do banco de dados
+
+                // Passa os dados para a view contAluno.blade.php
+                return view('aluno.indexaluno', compact('atividades'));
+
+                //       return view('aluno.indexaluno');
             } else if ($usertype == 'admin') {
                 // return view('admin.index');
 
@@ -76,7 +82,7 @@ class AdminController extends Controller
                                     <option value="prof">Professor</option>
                                     <option value="user">Aluno</option>
                                 </select>
-                                <button type="submit">Salvar</button>
+                                <button type="submit"min>Salvar</button>
                             </form>
                         </div>
                     </div>
@@ -143,19 +149,43 @@ class AdminController extends Controller
     public function viewTurma()
     {
         $turmas = Turma::all(); // Recupera todas as turmas
+        $professores = Usuario::where('usertype', 'prof')->get();
 
-        return view('admin.viewTurma', ['turmas' => $turmas]);
+        return view('admin.viewTurma', [
+            'turmas' => $turmas,
+            'professores' => $professores,
+        ]);
     }
+
+
+    // mostrar atividade ao aluno ao clicar no link 
+    public function show($id)
+    {
+        $atividade = Atividade::findOrFail($id);
+        return view('aluno.atvAluno', compact('atividade'));
+    }
+
+
+
+
+
+
+
+
+
+
+
+    
 }
 
 
-/* 
-PARA ATUALIZAR 
+/*
+PARA ATUALIZAR
 event(new AtualizaTipoUsuario($user, $newRole));
 
         // Dispara o evento para atualizar o perfil
         AtualizaTipoUsuario::dispatch($user, $newRole);
 
         return response()->json(['message' => 'User role updated successfully.']);
-   
+
  */

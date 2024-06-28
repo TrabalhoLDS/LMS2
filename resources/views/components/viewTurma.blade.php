@@ -58,17 +58,69 @@
   </style>
 </head>
 <body>
-    <div class="container">
-        <h2 class="titulo">Turmas</h2>
 
-        <ul class="materias">
-            @foreach($turmas as $turma)
-            <li class="materia">
-                <a href=""><h3>{{ $turma->nome }}</h3></a>
-            </li>
+    <div class="container mt-4">
+        <div class="row justify-content-center">
+                    <hr class="full-width-line">
+                        <div class="centered-names" id="user-list">
+                            <div class="d-flex align-items-center justify-content-between">
+                                <div>
+                                    <form method="POST" action="{{ route('vincular.turma.professor') }}">
+                                        @csrf
+
+                                        <div class="form-group">
+                                            <label for="turma_id">Turma</label>
+                                            <select class="form-control" id="turma_id" name="turma_id">
+                                                <option value="" selected disabled hidden>Selecione a Turma</option>
+                                                @foreach ($turmas as $turma)
+                                                    <option value="{{ $turma->id }}">{{ $turma->nome }}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="professor_id">Professor</label>
+                                            <select class="form-control" id="professor_id" name="professor_id">
+                                                <option value="" selected disabled hidden>Selecione o Professor</option>
+                                                @foreach ($professores as $professor)
+                                                    <option value="{{ $professor->id }}">{{ $professor->name }}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+
+                                        <button type="submit" class="btn btn-primary">Vincular Turma e Professor</button>
+                                    </form>
+                                </div>
+                            </div>
+                            <hr class="full-width-line">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    @if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
             @endforeach
         </ul>
     </div>
+@endif
+
+@if (session('error'))
+    <div class="alert alert-danger">
+        {{ session('error') }}
+    </div>
+@endif
+
+@if (session('success'))
+    <div class="alert alert-success">
+        {{ session('success') }}
+    </div>
+@endif
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
