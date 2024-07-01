@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Atividade;
 use App\Models\Turma;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -23,7 +24,7 @@ class AdminController extends Controller
 
             if ($usertype == 'user') {
 
-                        // $atividades = aula::ordeByDesc('id')-get(); 
+                        // $atividades = aula::ordeByDesc('id')-get();
 
 
         $atividades = Atividade::all(); // Busca todas as atividades do banco de dados
@@ -32,7 +33,7 @@ class AdminController extends Controller
 
          // Passa os dados para a view contAluno.blade.php
          return view('aluno.indexaluno', compact('atividades'));
-         
+
          //       return view('aluno.indexaluno');
             } else if ($usertype == 'admin') {
                 // return view('admin.index');
@@ -171,7 +172,7 @@ class AdminController extends Controller
 
 
 
-    
+
 }
 
 
