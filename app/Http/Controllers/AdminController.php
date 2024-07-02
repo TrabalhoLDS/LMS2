@@ -44,7 +44,12 @@ class AdminController extends Controller
                 return view('admin.index', compact('usuarios'));
             } else if ($usertype == 'prof') {
 
-                $turmas = Turma::all();
+                $professor_id = Auth::id();
+
+                // Agora você pode buscar as turmas associadas a esse professor através da relação many-to-many
+                    $turmas = Turma::whereHas('professores', function ($query) use ($professor_id) {
+                    $query->where('user_id', $professor_id);
+                })->get();
 
                 // Passar os posts para a view
                 return view('prof.index', compact('turmas'));

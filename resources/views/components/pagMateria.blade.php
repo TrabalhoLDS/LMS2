@@ -72,8 +72,6 @@
       background-color: #0056b3;
     }
 
-    
-
     ul li:hover {
       background-color: #e2e2e2;
     }
@@ -101,7 +99,7 @@
     <h1 class="titulo">
       <i class="fas fa-calculator icone-matematica"></i>Matemática
     </h1>
-    
+
     <!-- Formulário para adicionar conteúdo -->
     <div class="item">
       <h3 class="titulo-secao">
@@ -118,7 +116,7 @@
         </a>
       </h3>
     </div>
-    
+
     <div class="item">
       <h3 class="titulo-secao">
         <a href="boletim">
@@ -133,10 +131,12 @@
         <li><a href=""><i class="fas fa-book-open"></i> Atividade 1</a></li>
         <li><a href=""><i class="fas fa-book-open"></i> Aula 2</a></li>
         <li><a href=""><i class="fas fa-book-open"></i> Atividade 2</a></li>
-        <!-- Adicione mais alunos conforme necessário -->
+        <!-- Adicione mais itens conforme necessário -->
       </ul>
     </div>
-  </div>
+
+    <!-- Botão de Voltar -->
+    <a href="{{ route('home') }}" class="btn-voltar"><i class="fas fa-arrow-left"></i> Voltar</a>
   </div>
 
   <!-- Adicionando Bootstrap JS -->

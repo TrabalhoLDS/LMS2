@@ -14,15 +14,6 @@
 
     <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
         <ul class="navbar-nav">
-            <li class="nav-item active">
-                <a class="nav-link" href="addMateriaADM">ADM</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="subject">Aluno</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="subjectuser">Professor</a>
-            </li>
             <li class="nav-item">
                 <!-- Formulário de logout -->
                 <form method="POST" action="{{ route('logout') }}" x-data>

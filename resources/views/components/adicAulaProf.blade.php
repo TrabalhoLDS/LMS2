@@ -53,40 +53,49 @@ button:hover {
 </style>
 <body>
     <div class="container mt-4">
-    <div class="row justify-content-center">
-        <h2>Adicionar Atividade</h2>
-        <form action="#" method="POST" enctype="multipart/form-data">
-            <div class="form-group">
-                <label for="titulo">Título da Atividade:</label>
-                <input type="text" id="titulo" name="titulo" required>
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header">
+                        <h2>Adicionar Atividade</h2>
+                    </div>
+                    <div class="card-body">
+                        <form action="#" method="POST" enctype="multipart/form-data">
+                            @csrf
+                            <div class="form-group">
+                                <label for="titulo">Título da Atividade:</label>
+                                <input type="text" class="form-control" id="titulo" name="titulo" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="descricao">Descrição da Atividade:</label>
+                                <textarea class="form-control" id="descricao" name="descricao" rows="4" required></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="data_abertura">Data de Abertura:</label>
+                                <input type="date" class="form-control" id="data_abertura" name="data_abertura" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="data_vencimento">Data de Vencimento:</label>
+                                <input type="date" class="form-control" id="data_vencimento" name="data_vencimento" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="tipo">Tipo de Atividade:</label>
+                                <select class="form-control" id="tipo" name="tipo" required>
+                                    <option value="exercicio">Exercício</option>
+                                    <option value="trabalho">Trabalho</option>
+                                    <option value="projeto">Projeto</option>
+                                    <option value="avaliacao">Avaliação</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="arquivos">Anexar Arquivos:</label>
+                                <input type="file" class="form-control-file" id="arquivos" name="arquivos[]" multiple>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Adicionar Atividade</button>
+                        </form>
+                    </div>
+                </div>
             </div>
-            <div class="form-group">
-                <label for="descricao">Descrição da Atividade:</label>
-                <textarea id="descricao" name="descricao" rows="4" required></textarea>
-            </div>
-            <div class="form-group">
-                <label for="data_abertura">Data de Abertura:</label>
-                <input type="date" id="data_abertura" name="data_abertura" required>
-            </div>
-            <div class="form-group">
-                <label for="data_vencimento">Data de Vencimento:</label>
-                <input type="date" id="data_vencimento" name="data_vencimento" required>
-            </div>
-            <div class="form-group">
-                <label for="tipo">Tipo de Atividade:</label>
-                <select id="tipo" name="tipo" required>
-                    <option value="exercicio">Exercício</option>
-                    <option value="trabalho">Trabalho</option>
-                    <option value="projeto">Projeto</option>
-                    <option value="avaliacao">Avaliação</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label for="arquivos">Anexar Arquivos:</label>
-                <input type="file" id="arquivos" name="arquivos" multiple>
-            </div>
-            <button type="submit">Adicionar Atividade</button>
-        </form>
+        </div>
     </div>
-</div>
 </body>

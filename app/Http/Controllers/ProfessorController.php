@@ -7,6 +7,7 @@ use App\Http\Requests\UpdateProfessorRequest;
 use App\Models\Atividade;
 use App\Models\Professor;
 use App\Models\Turma;
+use App\Models\Usuario;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -76,7 +77,9 @@ class ProfessorController extends Controller
 
     public function boletim()
     {
-        return view('prof.boletim');
+        $alunos = Usuario::where('usertype', 'user')->get(); // Ajuste conforme a estrutura do seu banco de dados
+
+        return view('prof.boletim', compact('alunos'));
     }
 
     public function notas()
