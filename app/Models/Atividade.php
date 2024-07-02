@@ -11,11 +11,11 @@ class Atividade extends Model
 
     protected $table = 'atividades'; //indica node da tabela no BD
 
-    
+
     // Campos que podem ser preenchidos no formulário
     protected $fillable = [
         'id',
-        'nome', 
+        'nome',
         'descricao',
         'dataAbertura',
         'dataExpiracao',
@@ -30,4 +30,9 @@ class Atividade extends Model
             ->withPivot('id_turma');
     }
 
+    // Relacionamento muitos-para-muitos com Professor através da tabela pivô atividade_professor_turma
+    public function turmas()
+    {
+        return $this->belongsToMany(Turma::class, 'turma_atividade', 'id_turma', 'id_atividade');
+    }
 }

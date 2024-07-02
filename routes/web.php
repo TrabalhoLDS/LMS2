@@ -90,6 +90,7 @@ Route::middleware(['auth', 'aluno:admin,user'])->group(function () {
 Route::get('/contAluno', [AtividadeController::class, 'index'])->name('contAluno');
 Route::get('/atividades/create', [AtividadeController::class, 'create'])->name('atividades.create');
 Route::post('/atividade/store', [AtividadeController::class, 'store'])->name('atividades.store');
-Route::post('/atividades', [AtividadeController::class, 'store'])->name('atividades.store');
+Route::post('/atividades', [AtividadeController::class, 'store'])->name('atividades.store'); // rota das atividades no mural 
+Route::get('/atividades/{id}', [AtividadeController::class, 'show'])->name('atividades.show');  // rota do link de para atividades 
 //Route::get('/atividades', [AtividadeController::class, 'index'])->name('atividades.index');
 //Route::get('/home', [AtividadeController::class, 'authenticated'])->name('home');

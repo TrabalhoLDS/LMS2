@@ -27,9 +27,7 @@ class AdminController extends Controller
                         // $atividades = aula::ordeByDesc('id')-get();
 
 
-        $atividades = Atividade::all(); // Busca todas as atividades do banco de dados
-
-        // return view('aluno.contAluno', compact('atividades'));
+                $atividades = Atividade::all(); // Busca todas as atividades do banco de dados
 
          // Passa os dados para a view contAluno.blade.php
          return view('aluno.indexaluno', compact('atividades'));
@@ -160,6 +158,14 @@ class AdminController extends Controller
             'turmas' => $turmas,
             'professores' => $professores,
         ]);
+    }
+
+
+    // mostrar atividade ao aluno ao clicar no link
+    public function show($id)
+    {
+        $atividade = Atividade::findOrFail($id);
+        return view('aluno.atvAluno', compact('atividade'));
     }
 
 
