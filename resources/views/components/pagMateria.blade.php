@@ -103,7 +103,7 @@
     <!-- Formulário para adicionar conteúdo -->
     <div class="item">
       <h3 class="titulo-secao">
-        <a href="/{turma_id}/addAula">
+        <a href="{{ route('addAula', ['turma_id' => $turma->id]) }}">
           <i class="fas fa-plus-circle"></i> Adicionar Aula
         </a>
       </h3>
@@ -111,7 +111,7 @@
 
     <div class="item">
       <h3 class="titulo-secao">
-        <a href="addAtividade">
+        <a href="{{ route('addAtividade', ['turma_id' => $turma->id]) }}">
           <i class="fas fa-plus-circle"></i> Adicionar Atividade
         </a>
       </h3>

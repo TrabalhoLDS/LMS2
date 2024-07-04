@@ -54,9 +54,9 @@ Route::middleware(['auth', 'prof'])->group(function () {
 
     Route::get('/materiasProf', [ProfessorController::class, 'index'])->name('materiasProf');
     //Página onde o professor adiciona aulas
-    Route::get('/{turma_id}/addAula', [ProfessorController::class, 'addAula'])->name('addAula');
+    Route::get('/addAula/{turma_id}', [ProfessorController::class, 'addAula'])->name('addAula');
     //Página onde o professor adiciona aulas
-    Route::get('/addAtividade', [ProfessorController::class, 'addAtividade'])->name('addAtividade');
+    Route::get('/addAtividade/{turma_id}', [ProfessorController::class, 'addAtividade'])->name('addAtividade');
     //Página onde o professor visualiza a lista de alunos
     Route::get('/boletim/{turma_id}', [ProfessorController::class, 'boletim'])->name('boletim');
     //Página onde o professor vizualiza as notas

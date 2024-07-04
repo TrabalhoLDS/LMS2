@@ -40,6 +40,7 @@ class ProfessorController extends Controller
             $usertype = Auth()->user()->usertype;
 
             if ($usertype == 'prof') {
+                $turma = Turma::findOrFail($turma_id);
                 return view('prof.addAula', compact('turma_id'));
             }
         }
@@ -52,25 +53,11 @@ class ProfessorController extends Controller
 
             if ($usertype == 'prof') {
                 $turma = Turma::findOrFail($turma_id);
-                
+
                 return view('prof.addAtividade', compact('turma_id'));
             }
         }
     }
-
-    // Relacionamento muitos-para-muitos com Atividade através da tabela pivô atividade_professor_turma
-    public function atividades()
-    {
-        return $this->belongsToMany(Atividade::class, 'atividade_professor_turma', 'id_professor', 'id_atividade')
-            ->withPivot('id_turma');
-    }
-
-    // Relacionamento muitos-para-muitos com Turma através da tabela pivô professor_turma
-    public function turmas()
-    {
-        return $this->belongsToMany(Turma::class, 'professor_turma', 'id_professor', 'id_turma');
-    }
-
 
     public function materia($turma_id)
     {
