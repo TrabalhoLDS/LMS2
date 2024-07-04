@@ -14,7 +14,7 @@ public function up()
     Schema::create('aluno_turma', function (Blueprint $table) {
         $table->id();
         $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
-        $table->foreignId('turma_id')->constrained('turmas')->onDelete('cascade');
+        $table->foreignId('turma_id')->constrained('turmas', 'id')->onDelete('cascade');
         $table->timestamps();
     });
 }

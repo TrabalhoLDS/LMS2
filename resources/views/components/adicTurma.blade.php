@@ -42,7 +42,7 @@
   </style>
 </head>
 <body><br>
-<h2 class="titulo"> Adicionar Turmas</h2>
+<h2 class="titulo"> Adicionar Turma</h2>
   <div class="container">
     <!-- esta sendo enviado para o contoller admin na função store -->
     <form id="formAtualizarUsuario" action="{{route('admin.store')}}" method="POST">

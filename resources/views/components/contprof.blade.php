@@ -69,20 +69,20 @@
   <div class="container">
     <h2>Turmas</h2>
     <ul class="turmas">
-    @foreach($turmas as $turma)
-      <li>
-        <a href="materia" class="turma">
-        {{ $turma->nome }}
-          <span class="icones">
-            <i class="fas fa-chart-bar"></i> <!-- Ícone de estatísticas -->
-            <i class="fas fa-edit"></i> <!-- Ícone de editar -->
-            <i class="fas fa-eye"></i> <!-- Ícone de visualizar -->
-          </span>
-        </a>
-      </li>
-    @endforeach
-      <!-- Outras turmas -->
+        @foreach($turmas as $turma)
+            <li>
+                <a href="{{ route('materia', ['turma_id' => $turma->id]) }}" class="turma">
+                    {{ $turma->nome }}
+                    <span class="icones">
+                        <i class="fas fa-chart-bar" title="Estatísticas"></i> <!-- Ícone de estatísticas -->
+                        <i class="fas fa-edit" title="Editar"></i> <!-- Ícone de editar -->
+                        <i class="fas fa-eye" title="Visualizar"></i> <!-- Ícone de visualizar -->
+                    </span>
+                </a>
+            </li>
+        @endforeach
     </ul>
+
   </div>
 
   <!-- Adicionando Bootstrap JS -->

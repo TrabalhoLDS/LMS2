@@ -34,24 +34,26 @@ class ProfessorController extends Controller
     }
 
 
-    public function addAula()
+    public function addAula($turma_id)
     {
         if (Auth::id()) {
             $usertype = Auth()->user()->usertype;
 
             if ($usertype == 'prof') {
-                return view('prof.addAula');
+                return view('prof.addAula', compact('turma_id'));
             }
         }
     }
 
-    public function addAtividade()
+    public function addAtividade($turma_id)
     {
         if (Auth::id()) {
             $usertype = Auth()->user()->usertype;
 
             if ($usertype == 'prof') {
-                return view('prof.addAtividade');
+                $turma = Turma::findOrFail($turma_id);
+                
+                return view('prof.addAtividade', compact('turma_id'));
             }
         }
     }
@@ -70,15 +72,21 @@ class ProfessorController extends Controller
     }
 
 
-    public function materia()
+    public function materia($turma_id)
     {
-        return view('prof.materia');
+        $turma = Turma::findOrFail($turma_id);
+
+        return view('prof.materia', compact('turma'));
     }
 
-    public function boletim()
+    public function boletim($turma_id)
     {
-        $alunos = Usuario::where('usertype', 'user')->get(); // Ajuste conforme a estrutura do seu banco de dados
+        // Filtra os alunos associados à turma específica
+        $alunos = Usuario::whereHas('turmas', function ($query) use ($turma_id) {
+            $query->where('turma_id', $turma_id);
+        })->where('usertype', 'user')->get();
 
+        // Retorna a view com os alunos da turma para o boletim
         return view('prof.boletim', compact('alunos'));
     }
 

@@ -103,7 +103,7 @@
     <!-- Formulário para adicionar conteúdo -->
     <div class="item">
       <h3 class="titulo-secao">
-        <a href="addAula">
+        <a href="/{turma_id}/addAula">
           <i class="fas fa-plus-circle"></i> Adicionar Aula
         </a>
       </h3>
@@ -119,14 +119,14 @@
 
     <div class="item">
       <h3 class="titulo-secao">
-        <a href="boletim">
+        <a href="{{ route('boletim', ['turma_id' => $turma->id]) }}">
           <i class="fas fa-award"></i> Boletim
         </a>
       </h3>
     </div>
 
     <div class="item">
-      <h3 class="titulo-secao">Já Adicionadas</h3>
+      <h3 class="titulo-secao">Aulas e/ou atividades Adicionadas</h3>
       <ul>
         <li><a href=""><i class="fas fa-book-open"></i> Atividade 1</a></li>
         <li><a href=""><i class="fas fa-book-open"></i> Aula 2</a></li>

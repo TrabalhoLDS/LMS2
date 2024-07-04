@@ -87,7 +87,7 @@
             <i class="fas fa-award icone-boletim"></i> Boletim
         </h1>
         <!-- Botão de Voltar -->
-        <a href="materia" class="btn-voltar"><i class="fas fa-arrow-left"></i> Voltar</a>
+        <a href="../home" class="btn-voltar"><i class="fas fa-arrow-left"></i> Voltar</a>
     </div>
 
     <!-- Lista de alunos -->
@@ -99,6 +99,8 @@
             @endforeach
         </ul>
     </div>
+
+
 </div>
 
 <!-- Adicionando Bootstrap JS -->

@@ -14,12 +14,12 @@
     <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
         <ul class="navbar-nav">
             <li class="nav-item active">
-                <a class="nav-link" href="viewAlunoTurma">Vincular turma aos alunos</a>
+                <a class="nav-link" href="viewAlunoTurma">Vincular Turma ao Aluno</a>
             </li>
     <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
         <ul class="navbar-nav">
             <li class="nav-item active">
-                <a class="nav-link" href="viewTurma">Visualizar Turma</a>
+                <a class="nav-link" href="viewTurma">Vincular Turma e Professor</a>
             </li>
     <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
         <ul class="navbar-nav">
@@ -28,9 +28,6 @@
             </li>
     <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
         <ul class="navbar-nav">
-            <li class="nav-item active">
-                <a class="nav-link" href="addMateriaADM">Adicionar Matéria</a>
-            </li>
             <li class="nav-item">
                 <!-- Formulário de logout -->
                 <form method="POST" action="{{ route('logout') }}" x-data>

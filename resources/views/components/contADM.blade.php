@@ -1,7 +1,7 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8 text-center">
-            <h1 class="display-5">Cadastrados</h1>
+            <h1 class="display-5">Usuários cadastrados</h1>
         </div>
     </div>
 </div>

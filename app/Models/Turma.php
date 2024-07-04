@@ -26,7 +26,7 @@ class Turma extends Model
     // Define a relação com usuários como alunos
     public function usuarios()
     {
-        return $this->belongsToMany(User::class, 'aluno_turma', 'turma_id', 'user_id');
+        return $this->belongsToMany(User::class, 'aluno_turma', 'user_id', 'turma_id');
     }
 
     // Relacionamento muitos-para-muitos com Professor através da tabela pivô atividade_professor_turma

@@ -106,18 +106,6 @@ class AdminController extends Controller
         }
     }
 
-    public function addM()
-    {
-
-        if (Auth::id()) {
-
-            $usertype = Auth()->user()->usertype;
-
-            if ($usertype == 'admin') {
-                return view('admin.addMateriaADM');
-            }
-        }
-    }
 
     public function store(Request $request)
     {
@@ -172,15 +160,6 @@ class AdminController extends Controller
         $atividade = Atividade::findOrFail($id);
         return view('aluno.atvAluno', compact('atividade'));
     }
-
-
-
-
-
-
-
-
-
 
 
 

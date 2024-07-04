@@ -16,7 +16,7 @@ class Usuario extends Model
 
 public function turmas()
     {
-        return $this->belongsToMany(Turma::class, 'aluno_turma', 'turma_id', 'user_id');
+        return $this->belongsToMany(Turma::class, 'aluno_turma', 'user_id', 'turma_id');
     }
 
 }

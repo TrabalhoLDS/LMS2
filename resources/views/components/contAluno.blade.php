@@ -10,7 +10,7 @@
 <div class="container mt-5">
     <div class="row justify-content-center">
         <div class="col-md-8 text-left">
-            <h3 class="display-9">Seja bem vindo...</h3>
+            <h3 class="display-9">Seja bem-vindo</h3>
         </div>
     </div>
 </div>
@@ -31,7 +31,7 @@
             <div class="card">
                 <div class="card-body text-center">
                     <h5 class="display-9 mb-4">Mural de Atividades</h5>
-                    
+
                     @if($atividades->isEmpty())
                         <p>Nenhuma atividade encontrada.</p>
                     @else
@@ -50,21 +50,21 @@
             </div>
         </div>
     </div>
-</div>       
-                    </div>                  
+</div>
+                    </div>
                 </div>
             </div>
         </div>
 
 
-        
+
         <!-- Segundo quadro -->
         <div class="col-md-6 mb-4">
             <div class="card">
                 <div class="card-body">
                     <div class="input-group-prepend">
                         <div class="col-md-8 text-center d-flex justify-content-center align-items-center">
-                            <h5 class="display-9">Diciplinas</h5>
+                            <h5 class="display-9">Disciplinas</h5>
                         </div>
                     </div>
                     <!-- Nomes e ícones dos materiais dentro da moldura -->

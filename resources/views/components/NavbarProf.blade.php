@@ -1,7 +1,7 @@
 <body>
 <!-- Navbar -->
 <nav class="navbar navbar-expand-sm bg-info navbar-dark">
-    <a class="navbar-brand" href="home">
+    <a class="navbar-brand" href="../home">
         <img src="{{ asset('img/logotipoo.png') }}" alt="Logotipo" width="60" height="60">
         <!-- Ícone de notificação -->
 
