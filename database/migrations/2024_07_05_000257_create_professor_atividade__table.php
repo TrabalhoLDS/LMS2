@@ -11,15 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('professors', function (Blueprint $table) {
+        Schema::create('professor_atividade', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('user_id'); // Chave estrangeira para users
-            $table->string('name');
-
+            $table->foreignId('professor_id')->constrained('professors', 'user_id')->onDelete('cascade');
+            $table->foreignId('atividade_id')->constrained('atividade')->onDelete('cascade');
             $table->timestamps();
-
-            // Definindo a chave estrangeira
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 
@@ -28,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('professors');
+        Schema::dropIfExists('professor_atividade_');
     }
 };

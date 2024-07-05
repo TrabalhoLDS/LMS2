@@ -11,23 +11,20 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('professors', function (Blueprint $table) {
+        Schema::create('professor_aula', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('usuario_id'); // Chave estrangeira para users
-            $table->string('name');
-
+            $table->foreignId('professor_id')->constrained('professors', 'user_id')->onDelete('cascade');
+            $table->foreignId('aula_id')->constrained('aulas')->onDelete('cascade');
             $table->timestamps();
-
-            // Definindo a chave estrangeira
-            $table->foreign('usuario_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
+
 
     /**
      * Reverse the migrations.
      */
     public function down(): void
     {
-        Schema::dropIfExists('professors');
+        Schema::dropIfExists('professor_aula_');
     }
 };
