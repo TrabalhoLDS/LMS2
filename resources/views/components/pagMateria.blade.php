@@ -97,7 +97,7 @@
 <body>
   <div class="container">
     <h1 class="titulo">
-      <i class="fas fa-calculator icone-matematica"></i>Matemática
+      <i class="fas fa-calculator icone-matematica"></i>{{ $turma->nome }}
     </h1>
 
     <!-- Formulário para adicionar conteúdo -->

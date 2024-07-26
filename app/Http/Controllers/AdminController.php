@@ -109,8 +109,6 @@ class AdminController extends Controller
 
     public function store(Request $request)
     {
-
-
         $validatedData = $request->validate([
             'nome' => 'required|string|max:255',
             // Adicione mais regras de validação conforme necessário para outros campos

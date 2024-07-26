@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AulaController;
 use App\Http\Controllers\TurmaController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
@@ -61,12 +62,12 @@ Route::middleware(['auth', 'prof'])->group(function () {
     Route::get('/boletim/{turma_id}', [ProfessorController::class, 'boletim'])->name('boletim');
     //Página onde o professor vizualiza as notas
     Route::get('/notas', [ProfessorController::class, 'notas'])->name('notas');
-
     Route::get('/addConteudo', [ProfessorController::class, 'addCont'])->name('addConteudo');
     Route::resource('professores', 'ProfessorController');
     //Página da matéria escolhidalogin
     Route::get('/materia/{turma_id}/', [ProfessorController::class, 'materia'])->name('materia');
     //Professor adiciona atividade
+    Route::post('/adicionarAula', [AulaController::class, 'adicionarAula'])->name('adicionarAula');
 });
 
 
