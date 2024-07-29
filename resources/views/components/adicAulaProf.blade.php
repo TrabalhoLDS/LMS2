@@ -60,26 +60,28 @@ button:hover {
                         <h2>Adicionar Atividade</h2>
                     </div>
                     <div class="card-body">
-                        <form action="{{route('adicionarAula')}}" method="POST" enctype="multipart/form-data">
-                            @csrf
-                            <div class="form-group">
-                                <label for="titulo">Título da Atividade:</label>
-                                <input type="text" class="form-control" id="nome" name="nome" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="descricao">Descrição da Atividade:</label>
-                                <textarea class="form-control" id="descricao" name="descricao" rows="4" required></textarea>
-                            </div>
-                            <div class="form-group">
-                                <label for="data_abertura">Data de Abertura:</label>
-                                <input type="date" class="form-control" id="data" name="data" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="arquivos">Anexar Arquivos:</label>
-                                <input type="file" class="form-control-file" id="caminhoArquivo" name="caminhoArquivo[]" multiple>
-                            </div>
-                            <button type="submit" class="btn btn-primary">Adicionar Atividade</button>
-                        </form>
+                        <!-- resources/views/prof/addAula.blade.php -->
+<form action="{{ route('adicionarAula', $turma_id) }}" method="POST" enctype="multipart/form-data">
+    @csrf
+    <div class="form-group">
+        <label for="nome">Título da Aula:</label>
+        <input type="text" class="form-control" id="nome" name="nome" required>
+    </div>
+    <div class="form-group">
+        <label for="descricao">Descrição da Aula:</label>
+        <textarea class="form-control" id="descricao" name="descricao" rows="4" required></textarea>
+    </div>
+    <div class="form-group">
+        <label for="data">Data de Abertura:</label>
+        <input type="date" class="form-control" id="data" name="data" required>
+    </div>
+    <div class="form-group">
+        <label for="caminhoArquivo">Anexar Arquivos:</label>
+        <input type="file" class="form-control-file" id="caminhoArquivo" name="caminhoArquivo[]" multiple>
+    </div>
+    <button type="submit" class="btn btn-primary">Adicionar Atividade</button>
+</form>
+
                     </div>
                 </div>
             </div>

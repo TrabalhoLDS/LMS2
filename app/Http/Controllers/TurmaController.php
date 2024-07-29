@@ -84,7 +84,7 @@ class TurmaController extends Controller
 
         try {
 
-            $atividade = Atividade::findOrFail($request->atividade_id);
+            $atividade = Atividade::findOrFail($request->atividade_id); 
             $turma = Turma::findOrFail($request->turma_id);
             //$account = Account::find(10);
 

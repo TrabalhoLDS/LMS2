@@ -24,11 +24,13 @@ class Atividade extends Model
     ];
 
     // Relacionamento muitos-para-muitos com Professor através da tabela pivô atividade_professor_turma
+/*    
+    APAGAR
     public function professores()
     {
         return $this->belongsToMany(Professor::class, 'atividade_professor_turma', 'id_atividade', 'id_professor')
             ->withPivot('id_turma');
-    }
+    } */
 
     // Relacionamento muitos-para-muitos com Professor através da tabela pivô atividade_professor_turma
     public function turmas()

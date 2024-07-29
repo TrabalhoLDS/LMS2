@@ -22,7 +22,6 @@
                         @foreach($usuarios as $user)
                         <div class="d-flex align-items-center justify-content-between">
                             <div class="d-flex align-items-center">
-                                <img src="./img/Foto_Bruno.jpg" id="Imagem Bruno" class="mr-3 same-size-img">
                                 <p class="p">{{ $user->name }}</p>
                             </div>
                             <div>
