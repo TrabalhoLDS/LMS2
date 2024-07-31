@@ -15,8 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('nome');
             $table->string('descricao');
-            $table->date('data');
-            $table->string('caminhoArquivo');
+            $table->string('caminho_arquivo');
             $table->timestamps();
         });
     }

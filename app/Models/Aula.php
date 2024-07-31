@@ -15,7 +15,6 @@ class Aula extends Model
     protected $fillable = [
         'nome',
         'descricao',
-        'data',
-        'caminhoArquivo'
+        'caminho_arquivo'
     ];
 }

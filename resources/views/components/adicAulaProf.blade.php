@@ -57,7 +57,7 @@ button:hover {
             <div class="col-md-8">
                 <div class="card">
                     <div class="card-header">
-                        <h2>Adicionar Atividade</h2>
+                        <h2>Adicionar Aula</h2>
                     </div>
                     <div class="card-body">
                         <!-- resources/views/prof/addAula.blade.php -->
@@ -72,12 +72,8 @@ button:hover {
         <textarea class="form-control" id="descricao" name="descricao" rows="4" required></textarea>
     </div>
     <div class="form-group">
-        <label for="data">Data de Abertura:</label>
-        <input type="date" class="form-control" id="data" name="data" required>
-    </div>
-    <div class="form-group">
         <label for="caminhoArquivo">Anexar Arquivos:</label>
-        <input type="file" class="form-control-file" id="caminhoArquivo" name="caminhoArquivo[]" multiple>
+        <input type="file" class="form-control-file" id="caminho_arquivo" name="caminho_arquivo[]" multiple>
     </div>
     <button type="submit" class="btn btn-primary">Adicionar Atividade</button>
 </form>
