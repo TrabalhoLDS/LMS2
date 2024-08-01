@@ -67,6 +67,7 @@ Route::middleware(['auth', 'prof'])->group(function () {
     //Página da matéria escolhidalogin
     Route::get('/materia/{turma_id}/', [ProfessorController::class, 'materia'])->name('materia');
     //Professor adiciona atividade
+    Route::get('/addQuestionario', [ProfessorController::class, 'addQuestionario'])->name('addQuestionario');
 });
 
 

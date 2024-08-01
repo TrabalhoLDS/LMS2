@@ -59,6 +59,9 @@ button:hover {
                 <div class="card-header">
                     <h2>Adicionar Atividade</h2>
                 </div>
+                <!-- Botão de Voltar -->
+        <a href="../home" class="btn-voltar"><i class="fas fa-arrow-left"></i><- Voltar</a>
+   
                 <div class="card-body">
                     @if(session('success'))
                         <div class="alert alert-success">

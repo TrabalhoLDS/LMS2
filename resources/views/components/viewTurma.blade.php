@@ -11,7 +11,7 @@
   <style>
     body {
       font-family: Arial, sans-serif;
-      background-color: #f0f0f0;
+      background-color: #fff;
     }
 
     .container {
@@ -58,7 +58,8 @@
   </style>
 </head>
 <body>
-
+<br>
+<h2 class="titulo"> Vincular Turma</h2>
     <div class="container mt-4">
         <div class="row justify-content-center">
                     <hr class="full-width-line">

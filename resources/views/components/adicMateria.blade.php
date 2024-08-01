@@ -46,6 +46,7 @@
 </head>
 <body><br>
 <h2 class="titulo">Adicionar Matéria</h2>
+
   <div class="container">
     <!-- esta sendo enviado para o contoller admin na função store -->
     <form  id="formAtualizarUsuario" action="{{route('admin.store')}}" method="POST">

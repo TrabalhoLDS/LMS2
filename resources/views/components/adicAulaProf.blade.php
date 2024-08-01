@@ -59,6 +59,9 @@ button:hover {
                     <div class="card-header">
                         <h2>Adicionar Aula</h2>
                     </div>
+                    <!-- Botão de Voltar -->
+        <a href="../home" class="btn-voltar"><i class="fas fa-arrow-left"></i><- Voltar</a>
+   
                     <div class="card-body">
                         <!-- resources/views/prof/addAula.blade.php -->
 <form action="{{ route('adicionarAula', $turma_id) }}" method="POST" enctype="multipart/form-data">

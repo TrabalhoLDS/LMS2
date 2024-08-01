@@ -119,6 +119,14 @@
 
     <div class="item">
       <h3 class="titulo-secao">
+        <a href="{{ route('addQuestionario', ['turma_id' => $turma->id]) }}">
+          <i class="fas fa-plus-circle"></i> Adicionar Questionário
+        </a>
+      </h3>
+    </div>
+
+    <div class="item">
+      <h3 class="titulo-secao">
         <a href="{{ route('boletim', ['turma_id' => $turma->id]) }}">
           <i class="fas fa-award"></i> Boletim
         </a>

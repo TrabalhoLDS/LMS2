@@ -5,7 +5,36 @@
         </div>
     </div>
 </div>
+<style>
+        .btn-salvar {
+            background-color: #4CAF50; /* Verde */
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
 
+        .btn-salvar:hover {
+            background-color: #45a049; /* Verde mais escuro ao passar o mouse */
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            margin-top: 6px;
+            margin-bottom: 16px;
+            resize: vertical;
+        }
+    </style>
 <div class="container mt-4">
     <div class="row justify-content-center">
         <div class="col-md-6">
@@ -30,7 +59,7 @@
                                             <option value="{{ $turma->id }}">{{ $turma->nome }}</option>
                                         @endforeach
                                     </select>
-                                    <button type="submit">Salvar</button>
+                                    <button type="submit"class="btn-salvar">Salvar</button>
                                 </form>
                             </div>
                         </div>
