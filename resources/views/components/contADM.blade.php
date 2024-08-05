@@ -51,11 +51,11 @@
                         @foreach($usuarios as $user)
                         <div class="d-flex align-items-center justify-content-between">
                             <div class="d-flex align-items-center">
-                                <p class="p">{{ $user->name }}</p>                
+                                <p class="p">{{ $user->name }}</p>
                             </div>
                             <!--Aqui é onde deve aparecer o nivel do usuario-->
                             <div class="d-flex align-items-center">
-                                <p class="p">{{ $user->name }}</p>                
+                                <p class="p">{{ $user->usertype }}</p>
                             </div>
                             <div>
                                 <form id="formAtualizarUsuario" action="{{route('users.update', ['user'=>$user->id])}}" method="POST">

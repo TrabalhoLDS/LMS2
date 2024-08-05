@@ -14,7 +14,6 @@ class Atividade extends Model
 
     // Campos que podem ser preenchidos no formulário
     protected $fillable = [
-        'id',
         'nome',
         'descricao',
         'dataAbertura',
@@ -24,7 +23,7 @@ class Atividade extends Model
     ];
 
     // Relacionamento muitos-para-muitos com Professor através da tabela pivô atividade_professor_turma
-/*    
+/*
     APAGAR
     public function professores()
     {
@@ -35,7 +34,7 @@ class Atividade extends Model
     // Relacionamento muitos-para-muitos com Professor através da tabela pivô atividade_professor_turma
     public function turmas()
     {
-        return $this->belongsToMany(Turma::class, 'turma_atividade', 'id_turma', 'id_atividade');
+        return $this->belongsToMany(Turma::class, 'atividade_turma', 'atividade_id','turma_id');
     }
 
     // Relacionamento muitos-para-muitos com Turma através da tabela pivô professor_turma

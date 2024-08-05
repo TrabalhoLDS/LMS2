@@ -61,14 +61,14 @@ button:hover {
                 </div>
                 <!-- Botão de Voltar -->
         <a href="../home" class="btn-voltar"><i class="fas fa-arrow-left"></i><- Voltar</a>
-   
+
                 <div class="card-body">
                     @if(session('success'))
                         <div class="alert alert-success">
                             {{ session('success') }}
                         </div>
                     @endif
-                    <form action="{{ route('atividades.store') }}" method="POST" enctype="multipart/form-data">
+                    <form action="{{ route('store', ['turma_id' => $turma->id]) }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <div class="form-group">
                             <label for="nome">Título da Atividade:</label>
@@ -96,8 +96,8 @@ button:hover {
                             </select>
                         </div>
                         <div class="form-group">
-                            <label for="arquivos">Anexar Arquivos:</label>
-                            <input type="file" class="form-control-file" id="arquivos" name="arquivos[]" multiple>
+                            <label for="caminhoArquivo">Anexar Arquivos:</label>
+                            <input type="file" class="form-control-file" id="caminhoArquivo" name="caminhoArquivo[]" multiple>
                         </div>
                         <button type="submit" class="btn btn-primary">Adicionar Atividade</button>
                     </form>

@@ -58,16 +58,17 @@ Route::middleware(['auth', 'prof'])->group(function () {
     Route::post('/addAula/{turma_id}', [AulaController::class, 'adicionarAula'])->name('adicionarAula');
     //Página onde o professor adiciona aulas
     Route::get('/addAtividade/{turma_id}', [ProfessorController::class, 'addAtividade'])->name('addAtividade');
+    Route::post('/addAtividade/{turma_id}', [AtividadeController::class, 'store'])->name('store');
     //Página onde o professor visualiza a lista de alunos
     Route::get('/boletim/{turma_id}', [ProfessorController::class, 'boletim'])->name('boletim');
     //Página onde o professor vizualiza as notas
-    Route::get('/notas', [ProfessorController::class, 'n    otas'])->name('notas');
+    Route::get('/notas', [ProfessorController::class, 'notas'])->name('notas');
     Route::get('/addConteudo', [ProfessorController::class, 'addCont'])->name('addConteudo');
     Route::resource('professores', 'ProfessorController');
     //Página da matéria escolhidalogin
     Route::get('/materia/{turma_id}/', [ProfessorController::class, 'materia'])->name('materia');
     //Professor adiciona atividade
-    Route::get('/addQuestionario', [ProfessorController::class, 'addQuestionario'])->name('addQuestionario');
+    Route::get('/addQuestionario/{turma_id}', [ProfessorController::class, 'addQuestionario'])->name('addQuestionario');
 });
 
 

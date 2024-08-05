@@ -32,5 +32,16 @@ class Turma extends Model
     // Relacionamento muitos-para-muitos com Professor através da tabela pivô atividade_professor_turma
     public function atividades()
     {
-        return $this->belongsToMany(Turma::class, 'turma_atividade', 'id_turma', 'id_atividade');    }
+        return $this->belongsToMany(Turma::class, 'atividade_turma', 'atividade_id','turma_id');
+    }
+
+    public function aulas()
+    {
+        return $this->belongsToMany(Turma::class, 'aula_turma', 'aula_id','turma_id');
+    }
+
+
+
+
+
 }

@@ -11,7 +11,7 @@ class Usuario extends Model
 
     public function professor()
 {
-    return $this->hasOne(Professor::class);
+    return $this->hasOne(Professor::class, 'user_id');
 }
 
 public function turmas()

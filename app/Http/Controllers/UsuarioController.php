@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Professor;
 use Illuminate\Http\Request;
 use App\Models\Usuario;
 
@@ -68,27 +69,46 @@ public function QuizAti()
      */
 
      //usando validaçãop por request
-    public function update(Request $request, string $id)
-    {
-                  // Validação dos dados do formulário (opcional, mas recomendado)
-                  $request->validate([
-                    'nivelUsuario' => 'required|in:admin,prof,user' // Certifique-se de ajustar as regras de validação conforme necessário
-                ]);
+     public function update(Request $request, string $id)
+     {
+         // Validação dos dados do formulário
+         $request->validate([
+             'nivelUsuario' => 'required|in:admin,prof,user'
+         ]);
 
-                // Encontre o usuário pelo ID
-                $user = Usuario::find($id);
+         // Encontre o usuário pelo ID
+         $user = Usuario::find($id);
 
-                // Verifique se o usuário existe
-                if (!$user) {
-                    return response()->json(['message' => 'Usuário não encontrado.'], 404);
-                }
+         // Verifique se o usuário existe
+         if (!$user) {
+             return response()->json(['message' => 'Usuário não encontrado.'], 404);
+         }
 
-                $user->usertype = $request->nivelUsuario;
-                $user->save();
+         // Armazena o tipo anterior do usuário para comparação
+         $previousUserType = $user->usertype;
+         $user->usertype = $request->nivelUsuario;
+         $user->save();
 
-                return response()->json(['message' => 'Tipo de usuário atualizado com sucesso.']);
+         // Se o usuário foi promovido a professor, crie um registro na tabela professors
+         if ($request->nivelUsuario == 'prof') {
+             // Verifica se já existe um professor associado a esse usuário
+             if (!$user->professor) {
+                 // Cria um novo registro na tabela professors
+                 Professor::create([
+                     'user_id' => $user->id,
+                     'name' => $user->name,
+                     // Adicione outros campos necessários para o professor aqui
+                 ]);
+             }
+         } elseif ($previousUserType == 'prof' && $request->nivelUsuario != 'prof') {
+             // Se o usuário estava no tipo 'prof' e agora mudou para outro tipo,
+             // Remove o registro da tabela professors
+             $user->professor()->delete();
+         }
 
-    }
+         return response()->json(['message' => 'Tipo de usuário atualizado com sucesso.']);
+     }
+
 
     /**
      * Remove the specified resource from storage.

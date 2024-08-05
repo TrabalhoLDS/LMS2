@@ -30,27 +30,15 @@ class Professor extends Model
      *
      */
 
-    public function user()
+    public function usuario()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(Usuario::class, 'user_id');
     }
 
     // Relacionamento muitos-para-muitos com Turma através da tabela pivô professor_turma
     public function turmas()
     {
         return $this->belongsToMany(Turma::class, 'professor_turma', 'id_professor', 'id_turma');
-    }
-
-    // Método para criar uma nova atividade e vincular à turma
-    public function criarEAssociarAtividade($atividadeData, $turmaId)
-    {
-        // Cria a nova atividade
-        $atividade = Atividade::create($atividadeData);
-
-        // Vincula a atividade ao professor e à turma
-        $this->atividades()->attach($atividade->id, ['id_turma' => $turmaId]);
-
-        return $atividade;
     }
 
     // Relacionamento muitos-para-muitos com Turma através da tabela pivô professor_turma
@@ -62,6 +50,6 @@ class Professor extends Model
     // Relacionamento muitos-para-muitos com Turma através da tabela pivô professor_turma
     public function atividades()
     {
-        return $this->belongsToMany(Turma::class, 'professor_turma', 'professor_id', 'atividade_id');
+        return $this->belongsToMany(Atividade::class, 'professor_atividade', 'professor_id', 'atividade_id');
     }
 }

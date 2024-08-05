@@ -61,10 +61,10 @@ button:hover {
                     </div>
                     <!-- Botão de Voltar -->
         <a href="../home" class="btn-voltar"><i class="fas fa-arrow-left"></i><- Voltar</a>
-   
+
                     <div class="card-body">
                         <!-- resources/views/prof/addAula.blade.php -->
-<form action="{{ route('adicionarAula', $turma_id) }}" method="POST" enctype="multipart/form-data">
+<form action="{{ route('adicionarAula', ['turma_id' => $turma->id]) }}" method="POST" enctype="multipart/form-data">
     @csrf
     <div class="form-group">
         <label for="nome">Título da Aula:</label>

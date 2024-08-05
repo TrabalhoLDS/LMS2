@@ -41,7 +41,7 @@ class ProfessorController extends Controller
 
             if ($usertype == 'prof') {
                 $turma = Turma::findOrFail($turma_id);
-                return view('prof.addAula', compact('turma_id'));
+                return view('prof.addAula', compact('turma'));
             }
         }
     }
@@ -54,7 +54,7 @@ class ProfessorController extends Controller
             if ($usertype == 'prof') {
                 $turma = Turma::findOrFail($turma_id);
 
-                return view('prof.addAtividade', compact('turma_id'));
+                return view('prof.addAtividade', compact('turma'));
             }
         }
     }
@@ -72,14 +72,28 @@ class ProfessorController extends Controller
         //}
     //}
 
-    public function addQuestionario()
+    public function addQuestionario($turma_id)
     {
         if (Auth::id()) {
             $usertype = Auth()->user()->usertype;
 
             if ($usertype == 'prof') {
+                $turma = Turma::findOrFail($turma_id);
 
-                return view('prof.addQuestionario');
+                return view('prof.addQuestionario', compact('turma_id'));
+            }
+        }
+    }
+
+    public function adicionarQuestionario($turma_id)
+    {
+        if (Auth::id()) {
+            $usertype = Auth()->user()->usertype;
+
+            if ($usertype == 'prof') {
+                $turma = Turma::findOrFail($turma_id);
+
+                return view('prof.addQuestionario', compact('turma_id'));
             }
         }
     }

@@ -18,7 +18,7 @@ return new class extends Migration
             $table->date('dataAbertura');
             $table->date('dataExpiracao');
             $table->string('tipoAtividade');
-            $table->string('caminhoArquivo');
+            $table->string('caminhoArquivo')->nullable();
             $table->timestamps();
         });
     }
