@@ -57,7 +57,7 @@ class AulaController extends Controller
 
         $aula->turmas()->attach($turma_id);
 
-        // Associar a atividade ao professor
+        // Associar a atividade ao professor 
         $professor->aulas()->attach($aula->id);
 
 

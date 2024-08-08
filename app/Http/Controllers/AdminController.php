@@ -24,13 +24,23 @@ class AdminController extends Controller
 
             if ($usertype == 'user') {
 
-                        // $atividades = aula::ordeByDesc('id')-get();
+                $aluno_id = Auth::id();
+
+                // Agora você pode buscar as turmas associadas a esse professor através da relação many-to-many
+                    $turmas = Turma::whereHas('usuarios', function ($query) use ($aluno_id) {
+                    $query->where('user_id', $aluno_id);
+                })->get();
 
 
-                $atividades = Atividade::all(); // Busca todas as atividades do banco de dados
+                $turma_ids = $turmas->pluck('id');
+
+                // Busca as atividades associadas às turmas encontradas
+                $atividades = Atividade::whereHas('turmas', function ($query) use ($turma_ids) {
+                    $query->whereIn('turma_id', $turma_ids);
+                })->get();
 
          // Passa os dados para a view contAluno.blade.php
-         return view('aluno.indexaluno', compact('atividades'));
+         return view('aluno.indexaluno', compact('atividades', 'turmas'));
 
          //       return view('aluno.indexaluno');
             } else if ($usertype == 'admin') {

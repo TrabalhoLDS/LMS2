@@ -72,8 +72,18 @@
                     <div class="centered-names">
                         <div class="d-flex align-items-center justify-content-between">
                             <div class="d-flex align-items-center">
-                                <i class="fas fa-calculator mr-3 blue-icon"></i> <!-- Ícone representando Literatura -->
-                                <p class="p">Matemática</p>
+                                @foreach($turmas as $turma)
+            <li>
+                <a href="#" class="turma">
+                    <p>{{ $turma->nome }}</p>
+                    <span class="icones">
+                        <i class="fas fa-chart-bar" title="Estatísticas"></i> <!-- Ícone de estatísticas -->
+                        <i class="fas fa-edit" title="Editar"></i> <!-- Ícone de editar -->
+                        <i class="fas fa-eye" title="Visualizar"></i> <!-- Ícone de visualizar -->
+                    </span>
+                </a>
+            </li>
+        @endforeach
                             </div>
                         </div>
                     </div>
