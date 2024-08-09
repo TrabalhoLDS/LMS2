@@ -43,6 +43,7 @@ Route::middleware(['auth', 'admin:admin'])->group(function () {
     Route::get('/addMateriaADM', [AdminController::class, 'addM'])->name('addMateriaADM');
     Route::post('/admin/store', [AdminController::class, 'store'])->name('admin.store');
     Route::get('/addTurma', [AdminController::class, 'addTurma'])->name('addTurma');
+    Route::get('/turmascriadas', [AdminController::class, 'turmascriadas'])->name('turmascriadas');
 });
 
 
@@ -69,6 +70,9 @@ Route::middleware(['auth', 'prof'])->group(function () {
     Route::get('/materia/{turma_id}/', [ProfessorController::class, 'materia'])->name('materia');
     //Professor adiciona atividade
     Route::get('/addQuestionario/{turma_id}', [ProfessorController::class, 'addQuestionario'])->name('addQuestionario');
+    //Professor adiciona questionario
+    Route::get('/visualizarATV/{turma_id}', [ProfessorController::class, 'visualizarATV'])->name('visualizarATV');
+    //Professor visualiza atividades e aulas
 });
 
 

@@ -51,6 +51,11 @@
     <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
         <ul class="navbar-nav">
             <li class="nav-item active">
+                <a class="custom-button" href="turmascriadas">Turmas Criadas</a>
+            </li>
+    <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+        <ul class="navbar-nav">
+            <li class="nav-item active">
                 <a class="custom-button" href="viewAlunoTurma">Vincular Alunos</a>
             </li>
     <div class="collapse navbar-collapse justify-content-end" id="navbarNav">

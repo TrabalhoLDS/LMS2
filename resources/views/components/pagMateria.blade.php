@@ -100,6 +100,23 @@
       <i class="fas fa-calculator icone-matematica"></i>{{ $turma->nome }}
     </h1>
 
+    <div class="item">
+      <h3 class="titulo-secao">
+      <a href="{{ route('visualizarATV', ['turma_id' => $turma->id]) }}">
+          <i class="fas fa-bookmark"></i> Minhas Atividades
+        </a>
+      </h3>
+    </div>
+
+    <div class="item">
+      <h3 class="titulo-secao">Aulas e/ou atividades Adicionadas</h3>
+        <li><a href=""><i class="fas fa-book-open"></i> Atividade 1</a></li>
+        <li><a href=""><i class="fas fa-book-open"></i> Aula 2</a></li>
+        <li><a href=""><i class="fas fa-book-open"></i> Atividade 2</a></li>
+        <!-- Adicione mais itens conforme necessário -->
+      </ul>
+    </div>
+
     <!-- Formulário para adicionar conteúdo -->
     <div class="item">
       <h3 class="titulo-secao">
@@ -133,15 +150,10 @@
       </h3>
     </div>
 
-    <div class="item">
-      <h3 class="titulo-secao">Aulas e/ou atividades Adicionadas</h3>
+    
+
       <ul>
-        <li><a href=""><i class="fas fa-book-open"></i> Atividade 1</a></li>
-        <li><a href=""><i class="fas fa-book-open"></i> Aula 2</a></li>
-        <li><a href=""><i class="fas fa-book-open"></i> Atividade 2</a></li>
-        <!-- Adicione mais itens conforme necessário -->
-      </ul>
-    </div>
+      
 
     <!-- Botão de Voltar -->
     <a href="{{ route('home') }}" class="btn-voltar"><i class="fas fa-arrow-left"></i> Voltar</a>

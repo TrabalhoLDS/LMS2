@@ -59,6 +59,19 @@ class ProfessorController extends Controller
         }
     }
 
+    public function visualizarATV($turma_id)
+    {
+        if (Auth::id()) {
+            $usertype = Auth()->user()->usertype;
+
+            if ($usertype == 'prof') {
+                $turma = Turma::findOrFail($turma_id);
+
+                return view('prof.visualizarATV', compact('turma'));
+            }
+        }
+    }
+
     //public function addQuestionario($turma_id)
     //{
       //  if (Auth::id()) {

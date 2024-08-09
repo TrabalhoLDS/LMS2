@@ -35,12 +35,12 @@ class AdminController extends Controller
                 $turma_ids = $turmas->pluck('id');
 
                 // Busca as atividades associadas às turmas encontradas
-                $atividades = Atividade::whereHas('turmas', function ($query) use ($turma_ids) {
-                    $query->whereIn('turma_id', $turma_ids);
-                })->get();
+                //$atividades = Atividade::whereHas('turmas', function ($query) use ($turma_ids) {
+                //    $query->whereIn('turma_id', $turma_ids);
+                //})->get();
 
          // Passa os dados para a view contAluno.blade.php
-         return view('aluno.indexaluno', compact('atividades', 'turmas'));
+         return view('aluno.indexaluno', compact('turmas'));
 
          //       return view('aluno.indexaluno');
             } else if ($usertype == 'admin') {
@@ -148,6 +148,11 @@ class AdminController extends Controller
     public function TurmaAprofundado()
     {
         return view('admin.TurmaAprofundado');
+    }
+
+    public function turmascriadas()
+    {
+        return view('admin.turmascriadas');
     }
 
     public function viewTurma()

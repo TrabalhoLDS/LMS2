@@ -5,36 +5,56 @@
         </div>
     </div>
 </div>
+
 <style>
-        .btn-salvar {
-            background-color: #4CAF50; /* Verde */
-            border: none;
-            color: white;
-            padding: 10px 20px;
-            text-align: center;
-            text-decoration: none;
-            display: inline-block;
-            font-size: 16px;
-            margin: 4px 2px;
-            cursor: pointer;
-            border-radius: 5px;
-        }
+    .btn-salvar {
+        background-color: #4CAF50; /* Verde */
+        border: none;
+        color: white;
+        padding: 10px 20px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+        border-radius: 5px;
+    }
 
-        .btn-salvar:hover {
-            background-color: #45a049; /* Verde mais escuro ao passar o mouse */
-        }
+    .btn-salvar:hover {
+        background-color: #45a049; /* Verde mais escuro ao passar o mouse */
+    }
 
-        .form-control {
-            width: 100%;
-            padding: 12px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            box-sizing: border-box;
-            margin-top: 6px;
-            margin-bottom: 16px;
-            resize: vertical;
-        }
-    </style>
+    .btn-apagar {
+        background-color: #dc3545; /* Vermelho */
+        border: none;
+        color: white;
+        padding: 10px 20px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+        border-radius: 5px;
+    }
+
+    .btn-apagar:hover {
+        background-color: #c82333; /* Vermelho mais escuro ao passar o mouse */
+    }
+
+    .form-control {
+        width: 100%;
+        padding: 12px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+        margin-top: 6px;
+        margin-bottom: 16px;
+        resize: vertical;
+    }
+</style>
+
 <div class="container mt-4">
     <div class="row justify-content-center">
         <div class="col-md-6">
@@ -53,21 +73,28 @@
                             <div class="d-flex align-items-center">
                                 <p class="p">{{ $user->name }}</p>
                             </div>
-                            <!--Aqui é onde deve aparecer o nivel do usuario-->
+                            <!-- Aqui é onde deve aparecer o nível do usuário -->
                             <div class="d-flex align-items-center">
                                 <p class="p">{{ $user->usertype }}</p>
                             </div>
                             <div>
-                                <form id="formAtualizarUsuario" action="{{route('users.update', ['user'=>$user->id])}}" method="POST">
+                                <form action="{{ route('users.update', ['user' => $user->id]) }}" method="POST" style="display: inline;">
                                     @csrf
-                                    <input type="hidden" name="_method" value="PUT">
+                                    @method('PUT')
                                     <select class="form-control" id="nivelUsuario" name="nivelUsuario">
                                         <option value="" selected disabled hidden>Selecione</option>
                                         <option value="admin">Administrador</option>
                                         <option value="prof">Professor</option>
                                         <option value="user">Aluno</option>
                                     </select>
-                                    <button type="submit"class="btn-salvar">Salvar</button>
+                                    <button type="submit" class="btn-salvar">Salvar</button>
+                                </form>
+
+                                <!-- Formulário para deletar o usuário -->
+                                <form action="{{ route('users.destroy', ['user' => $user->id]) }}" method="POST" style="display: inline;" onsubmit="return confirm('Tem certeza de que deseja excluir este usuário?')">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn-apagar">Apagar</button>
                                 </form>
                             </div>
                         </div>
@@ -86,21 +113,20 @@
 </div>
 
 <script>
-$(document).ready(function() {
-    $('#search').on('keyup', function() {
-        var query = $(this).val();
-        $.ajax({
-            url: "{{ route('users.search') }}",
-            type: "GET",
-            data: {'search': query},
-            success: function(data) {
-                $('#user-list').html(data.html);
-            },
-            error: function(xhr) {
-                console.log(xhr.responseText); // Adiciona logs de erro no console para debug
-            }
+    $(document).ready(function() {
+        $('#search').on('keyup', function() {
+            var query = $(this).val();
+            $.ajax({
+                url: "{{ route('users.search') }}",
+                type: "GET",
+                data: {'search': query},
+                success: function(data) {
+                    $('#user-list').html(data.html);
+                },
+                error: function(xhr) {
+                    console.log(xhr.responseText); // Adiciona logs de erro no console para debug
+                }
+            });
         });
     });
-});
 </script>
-
