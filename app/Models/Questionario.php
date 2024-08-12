@@ -15,4 +15,9 @@ class Questionario extends Model
     {
         return $this->hasMany(Questao::class);
     }
+
+    public function professores()
+    {
+        return $this->belongsToMany(Professor::class, 'professor_questionario');
+    }
 }

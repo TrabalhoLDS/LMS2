@@ -15,4 +15,6 @@ class Questao extends Model
     {
         return $this->belongsTo(Questionario::class);
     }
+
+    
 }

@@ -52,4 +52,9 @@ class Professor extends Model
     {
         return $this->belongsToMany(Atividade::class, 'professor_atividade', 'professor_id', 'atividade_id');
     }
+
+    public function questionarios()
+    {
+        return $this->belongsToMany(Questionario::class, 'professor_questionario');
+    }
 }
