@@ -46,6 +46,7 @@ Route::middleware(['auth', 'admin:admin'])->group(function () {
     Route::post('/admin/store', [AdminController::class, 'store'])->name('admin.store');
     Route::get('/addTurma', [AdminController::class, 'addTurma'])->name('addTurma');
     Route::get('/turmascriadas', [AdminController::class, 'turmascriadas'])->name('turmascriadas');
+    Route::get('/detalhes_turma', [AdminController::class, 'detalhes_turma'])->name('detalhes_turma');
 });
 
 
@@ -75,6 +76,10 @@ Route::middleware(['auth', 'prof'])->group(function () {
     //Professor adiciona questionario
     Route::get('/visualizarATV/{turma_id}', [ProfessorController::class, 'visualizarATV'])->name('visualizarATV');
     //Professor visualiza atividades e aulas
+    Route::get('/detalhes_AULA/{turma_id}', [ProfessorController::class, 'detalhes_AULA'])->name('detalhes_AULA');
+    //Professor visualiza detalhes aulas
+    Route::get('/detalhes_ATV/{turma_id}', [ProfessorController::class, 'detalhes_ATV'])->name('detalhes_ATV');
+    //Professor visualiza detalhes atividades 
 
     Route::resource('questionarios', QuestionarioController::class);
 });

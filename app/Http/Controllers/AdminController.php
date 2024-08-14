@@ -155,6 +155,11 @@ class AdminController extends Controller
         return view('admin.turmascriadas');
     }
 
+    public function detalhes_turma()
+    {
+        return view('admin.detalhes_turma');
+    }
+    
     public function viewTurma()
     {
         $turmas = Turma::all(); // Recupera todas as turmas
