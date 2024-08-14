@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Professor;
+use App\Models\Questao;
 use App\Models\Questionario;
 use App\Models\Turma;
 use Illuminate\Http\Request;
@@ -42,18 +44,44 @@ class QuestionarioController extends Controller
      */
     public function store(Request $request)
     {
-        // Validação dos dados recebidos
+        // Valida o formulário
         $validatedData = $request->validate([
             'titulo' => 'required|string|max:255',
             'descricao' => 'nullable|string',
+            'professor_id' => 'required|exists:professors,id',  // Verifica se o professor existe
         ]);
-
-        // Cria um novo questionário
-        $questionario = Questionario::create($validatedData);
-
-        // Redireciona para a lista de questionários
-        return redirect()->route('questionarios.index')->with('success', 'Questionário criado com sucesso!');
+    
+        // Cria o questionário
+        $questionario = Questionario::create([
+            'titulo' => $validatedData['titulo'],
+            'descricao' => $validatedData['descricao'],
+        ]);
+    
+        // Encontra o professor
+        $professor = Professor::find($validatedData['professor_id']);
+    
+        if ($professor) {
+            // Associa o questionário ao professor
+            $professor->questionarios()->attach($questionario->id);
+        } else {
+            // Trata o caso em que o professor não foi encontrado
+            return back()->withErrors('Professor não encontrado.');
+        }
+    
+        // Adiciona as questões (se necessário)
+        if ($request->has('questoes')) {
+            foreach ($request->questoes as $questaoData) {
+                $questionario->questoes()->create([
+                    'pergunta' => $questaoData['texto'],
+                    // Adicione os outros campos conforme necessário
+                ]);
+            }
+        }
+    
+        return redirect()->route('questionarios.index')->with('success', 'Questionário criado com sucesso.');
     }
+    
+    
 
     // Outros métodos, como update, delete, etc., podem ser adicionados conforme necessário
 }

@@ -7,6 +7,8 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ProfessorController;
 use App\Http\Controllers\UsuarioController;
 use App\Http\Controllers\AtividadeController;
+use App\Http\Controllers\QuestionarioController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -73,6 +75,8 @@ Route::middleware(['auth', 'prof'])->group(function () {
     //Professor adiciona questionario
     Route::get('/visualizarATV/{turma_id}', [ProfessorController::class, 'visualizarATV'])->name('visualizarATV');
     //Professor visualiza atividades e aulas
+
+    Route::resource('questionarios', QuestionarioController::class);
 });
 
 

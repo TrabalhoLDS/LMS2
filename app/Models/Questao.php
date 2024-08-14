@@ -9,6 +9,8 @@ class Questao extends Model
 {
     use HasFactory;
 
+    protected $table = 'questoes';
+
     protected $fillable = ['questionario_id', 'pergunta'];
 
     public function questionario()
