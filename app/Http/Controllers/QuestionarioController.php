@@ -90,7 +90,8 @@ class QuestionarioController extends Controller
 
         $questionario->turmas()->attach($turma_id);
 
-        return response()->json(['success' => 'Aula salva com sucesso.'], 200);
+        //return response()->json(['success' => 'Aula salva com sucesso.'], 200);
+        return redirect('/home')->with('status', 'Usuário atualizado com sucesso!');
     }
 
 

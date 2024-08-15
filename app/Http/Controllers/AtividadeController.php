@@ -71,7 +71,8 @@ class AtividadeController extends Controller
         // Associar a atividade ao professor
         $professor->atividades()->attach($atividade->id);
 
-        return response()->json(['message' => 'Atividade criada e associada com sucesso.', 'atividade' => $atividade], 201);
+        //return response()->json(['message' => 'Atividade criada e associada com sucesso.', 'atividade' => $atividade], 201);
+        return redirect('/home')->with('status', 'Atividade criada e associada com sucesso.');
     }
 
 
