@@ -79,7 +79,7 @@ Route::middleware(['auth', 'prof'])->group(function () {
     Route::get('/detalhes_AULA/{turma_id}', [ProfessorController::class, 'detalhes_AULA'])->name('detalhes_AULA');
     //Professor visualiza detalhes aulas
     Route::get('/detalhes_ATV/{turma_id}', [ProfessorController::class, 'detalhes_ATV'])->name('detalhes_ATV');
-    //Professor visualiza detalhes atividades 
+    //Professor visualiza detalhes atividades
 
     Route::resource('questionarios', QuestionarioController::class);
 });

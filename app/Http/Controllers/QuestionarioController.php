@@ -6,7 +6,9 @@ use App\Models\Professor;
 use App\Models\Questao;
 use App\Models\Questionario;
 use App\Models\Turma;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class QuestionarioController extends Controller
 {
@@ -44,22 +46,24 @@ class QuestionarioController extends Controller
      */
     public function store(Request $request)
     {
+
+
         // Valida o formulário
         $validatedData = $request->validate([
             'titulo' => 'required|string|max:255',
-            'descricao' => 'nullable|string',
-            'professor_id' => 'required|exists:professors,id',  // Verifica se o professor existe
+            'descricao' => 'nullable|string'
         ]);
-    
+
+
         // Cria o questionário
         $questionario = Questionario::create([
             'titulo' => $validatedData['titulo'],
             'descricao' => $validatedData['descricao'],
         ]);
-    
+
         // Encontra o professor
-        $professor = Professor::find($validatedData['professor_id']);
-    
+        $professor = Professor::where('user_id', Auth::id())->first();
+
         if ($professor) {
             // Associa o questionário ao professor
             $professor->questionarios()->attach($questionario->id);
@@ -67,7 +71,7 @@ class QuestionarioController extends Controller
             // Trata o caso em que o professor não foi encontrado
             return back()->withErrors('Professor não encontrado.');
         }
-    
+
         // Adiciona as questões (se necessário)
         if ($request->has('questoes')) {
             foreach ($request->questoes as $questaoData) {
@@ -77,11 +81,11 @@ class QuestionarioController extends Controller
                 ]);
             }
         }
-    
-        return redirect()->route('questionarios.index')->with('success', 'Questionário criado com sucesso.');
+
+        return response()->json(['success' => 'Aula salva com sucesso.'], 200);
     }
-    
-    
+
+
 
     // Outros métodos, como update, delete, etc., podem ser adicionados conforme necessário
 }

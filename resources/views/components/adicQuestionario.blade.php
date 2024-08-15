@@ -86,9 +86,8 @@
                     <a href="../home" class="btn-voltar"><i class="fas fa-arrow-left"></i><- Voltar</a>
 
                             <div class="card-body">
-                                <form method="POST" enctype="multipart/form-data" action="{{ route('questionarios.store') }}">
+                                <form method="POST" enctype="multipart/form-data" action="{{ route('questionarios.store', ['turma_id' => $turma->id]) }}">
                                     @csrf
-                                    <input type="hidden" name="professor_id" value="{{ auth()->user()->id }}"> <!-- ID do professor logado -->
                                     <div class="form-group">
                                         <label for="nome">Título do Questionário:</label>
                                         <input type="text" class="form-control" id="nome" name="titulo" required>
