@@ -137,6 +137,32 @@ class ProfessorController extends Controller
         }
     }
 
+    public function detalhes_ATV($turma_id)
+    {
+        if (Auth::id()) {
+            $usertype = Auth()->user()->usertype;
+
+            if ($usertype == 'prof') {
+                $turma = Turma::findOrFail($turma_id);
+
+                return view('prof.detalhes_ATV', compact('turma_id'));
+            }
+        }
+    }
+    
+    public function detalhes_AULA($turma_id)
+    {
+        if (Auth::id()) {
+            $usertype = Auth()->user()->usertype;
+
+            if ($usertype == 'prof') {
+                $turma = Turma::findOrFail($turma_id);
+
+                return view('prof.detalhes_AULA', compact('turma_id'));
+            }
+        }
+    }
+
     public function materia($turma_id)
     {
         $turma = Turma::findOrFail($turma_id);

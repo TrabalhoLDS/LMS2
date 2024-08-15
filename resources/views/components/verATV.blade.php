@@ -99,7 +99,9 @@
                     <div id="activities-lessons-container">
                         <!-- Atividade 1 -->
                         <div class="activity-group">
-                            <h3>Atividade 1: Título da Atividade</h3>
+                        <a href="{{ route('detalhes_ATV', ['turma_id' => $turma->id]) }}" class="turma-link">
+                        <h3>Atividade 1: Título da Atividade</h3>
+                        </a>                         
                             <p><strong>Descrição:</strong> Descrição detalhada da atividade.</p>
                             <p><strong>Data de Criação:</strong> 10/08/2024</p>
                             <a href="/addAtividade/1" class="edit-button">Editar</a>
@@ -109,7 +111,10 @@
 
                         <!-- Aula 1 -->
                         <div class="lesson-group">
-                            <h3>Aula 1: Título da Aula</h3>
+                        <a href="{{ route('detalhes_AULA', ['turma_id' => $turma->id]) }}" class="turma-link">
+                        <h3>Aula 1: Título da Aula</h3>
+                        </a> 
+                            
                             <p><strong>Descrição:</strong> Descrição detalhada da aula.</p>
                             <p><strong>Data de Criação:</strong> 09/08/2024</p>
                             <a href="/addAula/1" class="edit-button">Editar</a>
