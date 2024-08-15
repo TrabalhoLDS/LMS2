@@ -82,6 +82,7 @@ Route::middleware(['auth', 'prof'])->group(function () {
     //Professor visualiza detalhes atividades
 
     Route::resource('questionarios', QuestionarioController::class);
+    
 });
 
 

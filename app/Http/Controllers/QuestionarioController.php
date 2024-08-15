@@ -72,7 +72,6 @@ class QuestionarioController extends Controller
             return back()->withErrors('Professor não encontrado.');
         }
 
-        $turma = Turma::findOrFail($validatedData['turma_id']);
 
         // Adiciona as questões (se necessário)
         if ($request->has('questoes')) {
@@ -84,7 +83,6 @@ class QuestionarioController extends Controller
             }
         }
 
-        $questionario->turmas()->attach($validatedData['turma_id']);
 
         return response()->json(['success' => 'Aula salva com sucesso.'], 200);
     }
