@@ -22,6 +22,11 @@ class Atividade extends Model
         'caminhoArquivo',
     ];
 
+
+    protected $dates = ['dataAbertura', 'dataVencimento'];
+
+
+
     // Relacionamento muitos-para-muitos com Professor através da tabela pivô atividade_professor_turma
 /*
     APAGAR
@@ -42,4 +47,8 @@ class Atividade extends Model
     {
         return $this->belongsToMany(Turma::class, 'professor_atividade', 'professor_id', 'atividade_id');
     }
+
+
+
+
 }

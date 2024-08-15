@@ -20,4 +20,9 @@ class Questionario extends Model
     {
         return $this->belongsToMany(Professor::class, 'professor_questionario');
     }
+
+    public function turmas()
+    {
+        return $this->belongsToMany(Turma::class, 'turma_questionario');
+    }
 }

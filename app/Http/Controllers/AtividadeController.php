@@ -9,6 +9,7 @@ use App\Models\Professor;
 use App\Models\Turma;
 use App\Models\User;
 use App\Models\Usuario;
+use Carbon\Carbon;
 use Exception;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
@@ -72,5 +73,47 @@ class AtividadeController extends Controller
 
         return response()->json(['message' => 'Atividade criada e associada com sucesso.', 'atividade' => $atividade], 201);
     }
+
+
+    public function show($id)
+{
+    $atividade = Atividade::findOrFail($id);
+    $atividade->dataAbertura = Carbon::parse($atividade->dataAbertura);
+    $atividade->dataExpiracao = Carbon::parse($atividade->dataExpiracao);
+   return view('aluno.atvAluno', compact('atividade'));
+}
+
+
+public function submit(Request $request, $id)
+{
+    $atividade = Atividade::findOrFail($id);
+
+    // Validação
+    $request->validate([
+        'arquivos.*' => 'file|max:2048', // Validação para arquivos
+        'fotos.*' => 'image|max:2048', // Validação para imagens
+        'comentarios' => 'nullable|string|max:1000', // Validação para comentários
+    ]);
+
+    // Salvar arquivos e fotos
+    if ($request->hasFile('arquivos')) {
+        foreach ($request->file('arquivos') as $file) {
+            // Lógica para salvar arquivos
+        }
+    }
+
+    if ($request->hasFile('fotos')) {
+        foreach ($request->file('fotos') as $photo) {
+            // Lógica para salvar fotos
+        }
+    }
+
+    // Salvar comentários
+    $atividade->comentarios = $request->input('comentarios');
+    $atividade->save();
+
+    return redirect()->route('atividade.show', $id)->with('success', 'Atividade enviada com sucesso!');
+}
+
 
 }
