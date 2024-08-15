@@ -1,7 +1,7 @@
 <body>
 <!-- Navbar -->
 <nav class="navbar navbar-expand-sm bg-info navbar-dark">
-    <a class="navbar-brand" href="home">
+    <a class="navbar-brand" href="../home">
         <img src="{{ asset('img/logotipoo.png') }}" alt="Logotipo" width="60" height="60">
         <!-- Ícone de notificação -->
 
@@ -26,7 +26,7 @@
         padding: 10px 20px; /* Ajuste o espaçamento interno conforme necessário */
         cursor: pointer;
         font-size: 16px; /* Ajuste o tamanho do texto conforme necessário */
-        
+
     }
 
     .custom-logout-button:hover {
@@ -49,7 +49,7 @@
             <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
         <ul class="navbar-nav">
             <li class="nav-item active">
-                <a class="custom-button" href="home">Inicio</a>
+                <a class="custom-button" href="../home">Início</a>
             </li>
                 <!-- Formulário de logout -->
             <form method="POST" action="{{ route('logout') }}" x-data>

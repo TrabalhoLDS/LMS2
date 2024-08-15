@@ -145,15 +145,18 @@ class AdminController extends Controller
         return view('admin.addTurma');
     }
 
-    public function TurmaAprofundado()
-    {
-        return view('admin.TurmaAprofundado');
-    }
 
     public function turmascriadas()
     {
-        return view('admin.turmascriadas');
+        // Recupera todas as turmas com os professores associados
+        $turmas = Turma::with('professores')->get();
+
+        return view('admin.turmascriadas', [
+            'turmas' => $turmas,
+        ]);
     }
+
+
 
     public function viewTurma()
     {

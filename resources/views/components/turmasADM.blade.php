@@ -104,7 +104,7 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8 text-center">
-            <h1 class="display-5">Turmas Criadas</h1>
+            <h1 class="display-5">Turmas</h1>
         </div>
     </div>
 
@@ -121,24 +121,33 @@
                         </form>
                         <hr class="full-width-line">
                         <div id="class-list">
-                            <!-- Exemplo de turmas -->
-                            <div class="d-flex align-items-center justify-content-between">
-                                <div class="d-flex align-items-center">
-                                    <p class="p">Turma 1: Nome da Turma</p>
+                            <!-- Loop para exibir as turmas -->
+                            @foreach($turmas as $turma)
+                                <div class="d-flex align-items-center justify-content-between">
+                                    <div class="d-flex align-items-center">
+                                        <p class="p">Turma {{ $turma->id }}: {{ $turma->nome }}</p>
+                                    </div>
+                                    <div class="d-flex align-items-center">
+                                        <p class="p">Professores:
+                                            @if($turma->professores->isNotEmpty())
+                                            @foreach($turma->professores as $professor)
+                                            {{ $professor->name }}{{ !$loop->last ? ', ' : '' }}
+                                        @endforeach
+                                            @else
+                                                Nenhum professor atribuído
+                                            @endif
+                                        </p>
+                                    </div>
+                                    <div>
+                                        <a href="{{ url('editar_turma.html?id=' . $turma->id) }}" class="btn-editar">Editar</a>
+                                        <a href="{{ url('excluir_turma.html?id=' . $turma->id) }}" class="btn-excluir">Excluir</a>
+                                    </div>
                                 </div>
-                                <div class="d-flex align-items-center">
-                                    <p class="p">Descrição breve</p>
-                                </div>
-                                <div>
-                                    <a href="editar_turma.html?id=1" class="btn-editar">Editar</a>
-                                    <a href="excluir_turma.html?id=1" class="btn-excluir">Excluir</a>
-                                </div>
-                            </div>
-                            <hr class="full-width-line">
-                            <!-- Repita o bloco acima para outras turmas -->
+                                <hr class="full-width-line">
+                            @endforeach
                         </div>
                     </div>
-                </div>
+                                    </div>
             </div>
         </div>
     </div>

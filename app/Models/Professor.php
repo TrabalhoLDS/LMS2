@@ -32,13 +32,13 @@ class Professor extends Model
 
     public function usuario()
     {
-        return $this->belongsTo(Usuario::class, 'user_id');
+        return $this->belongsTo(User::class, 'user_id');
     }
 
     // Relacionamento muitos-para-muitos com Turma através da tabela pivô professor_turma
     public function turmas()
     {
-        return $this->belongsToMany(Turma::class, 'professor_turma', 'id_professor', 'id_turma');
+        return $this->belongsToMany(Turma::class, 'professor_turma', 'user_id', 'turma_id');
     }
 
     // Relacionamento muitos-para-muitos com Turma através da tabela pivô professor_turma

@@ -60,17 +60,43 @@ class ProfessorController extends Controller
     }
 
     public function visualizarATV($turma_id)
-    {
-        if (Auth::id()) {
-            $usertype = Auth()->user()->usertype;
+{
+    if (Auth::check()) {
+        $usertype = Auth::user()->usertype;
 
-            if ($usertype == 'prof') {
-                $turma = Turma::findOrFail($turma_id);
+        if ($usertype == 'prof') {
+            $prof_id = Auth::id();
 
-                return view('prof.visualizarATV', compact('turma'));
+            // Recupera a turma específica
+            $turma = Turma::findOrFail($turma_id);
+
+            // Verifica se o professor está associado a essa turma
+            $isProfessorInTurma = $turma->professores->contains($prof_id);
+
+            if (!$isProfessorInTurma) {
+                // Caso o professor não esteja associado à turma, você pode redirecionar ou exibir uma mensagem de erro
+                return redirect()->route('home')->withErrors('Você não está associado a esta turma.');
             }
+
+            // Busca as atividades associadas à turma e ao professor
+            $atividades = Atividade::whereHas('turmas', function ($query) use ($turma_id) {
+                $query->where('turma_id', $turma_id);
+            })->whereHas('professors', function ($query) use ($prof_id) {
+                $query->where('user_id', $prof_id);
+            })->get();
+
+            // Passa a turma e as atividades para a view
+            return view('prof.visualizarATV', compact('turma', 'atividades'));
+        } else {
+            // Redirecionar ou tratar caso o usuário não seja um professor
+            return redirect()->route('home')->withErrors('Acesso negado.');
         }
+    } else {
+        // Redirecionar para login se o usuário não estiver autenticado
+        return redirect()->route('login')->withErrors('Você precisa estar autenticado.');
     }
+}
+
 
     //public function addQuestionario($turma_id)
     //{
