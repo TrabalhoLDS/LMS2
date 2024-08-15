@@ -119,7 +119,7 @@ class ProfessorController extends Controller
             if ($usertype == 'prof') {
                 $turma = Turma::findOrFail($turma_id);
 
-                return view('prof.addQuestionario', compact('turma_id'));
+                return view('prof.addQuestionario', compact('turma'));
             }
         }
     }

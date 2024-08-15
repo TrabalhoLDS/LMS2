@@ -46,7 +46,7 @@ class QuestionarioController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request->all());
+
 
         // Valida o formulário
         $validatedData = $request->validate([

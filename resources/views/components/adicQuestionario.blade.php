@@ -88,7 +88,6 @@
                             <div class="card-body">
                                 <form method="POST" enctype="multipart/form-data" action="{{ route('questionarios.store') }}">
                                     @csrf
-                                    <input type="hidden" name="turma_id" value="{{ $turma_id }}">
                                     <div class="form-group">
                                         <label for="nome">Título do Questionário:</label>
                                         <input type="text" class="form-control" id="nome" name="titulo" required>
