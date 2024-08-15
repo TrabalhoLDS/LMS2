@@ -47,7 +47,6 @@ class QuestionarioController extends Controller
     public function store(Request $request)
     {
 
-        $turma_id = $request->input('turma_id');
 
         // Valida o formulário
         $validatedData = $request->validate([
@@ -73,10 +72,6 @@ class QuestionarioController extends Controller
             return back()->withErrors('Professor não encontrado.');
         }
 
-        $turma = Turma::find($turma_id);
-        if (!$turma) {
-            return response()->json(['message' => 'Turma não encontrada com ID ' . $turma_id], 404);
-        }
 
         // Adiciona as questões (se necessário)
         if ($request->has('questoes')) {
@@ -88,7 +83,6 @@ class QuestionarioController extends Controller
             }
         }
 
-        $questionario->turmas()->attach($turma_id);
 
         //return response()->json(['success' => 'Aula salva com sucesso.'], 200);
         return redirect('/home')->with('status', 'Usuário atualizado com sucesso!');
