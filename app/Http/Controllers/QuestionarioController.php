@@ -44,9 +44,10 @@ class QuestionarioController extends Controller
     /**
      * Armazena um novo questionário no banco de dados.
      */
-    public function store(Request $request, $turma_id)
+    public function store(Request $request)
     {
 
+        $turma_id = $request->input('turma_id');
 
         // Valida o formulário
         $validatedData = $request->validate([
