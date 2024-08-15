@@ -106,7 +106,8 @@ public function QuizAti()
              $user->professor()->delete();
          }
 
-         return response()->json(['message' => 'Tipo de usuário atualizado com sucesso.']);
+            // Redireciona para a home com uma mensagem de sucesso
+            return redirect('/home')->with('status', 'Tipo de usuário atualizado com sucesso.');            
      }
 
 

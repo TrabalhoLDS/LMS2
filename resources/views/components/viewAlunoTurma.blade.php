@@ -124,17 +124,17 @@
         </div>
     </div>
 
-    @if (session('error'))
-        <div class="alert alert-danger">
-            {{ session('error') }}
-        </div>
-    @endif
+       @if (session('error'))
+            <div id="errorMessage" class="alert alert-danger">
+                {{ session('error') }}
+            </div>
+        @endif
 
-    @if (session('success'))
-        <div class="alert alert-success">
-            {{ session('success') }}
-        </div>
-    @endif
+        @if (session('success'))
+            <div id="successMessage" class="alert alert-success">
+                {{ session('success') }}
+            </div>
+        @endif
 
     <div class="card">
         <div class="card-body">
@@ -166,6 +166,27 @@
         </div>
     </div>
 </div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        // Seleciona as mensagens pelo ID
+        var errorMessage = document.getElementById('errorMessage');
+        var successMessage = document.getElementById('successMessage');
+
+        // Verifica se as mensagens existem e define um timer para ocultá-las
+        if (errorMessage) {
+            setTimeout(function() {
+                errorMessage.style.display = 'none';
+            }, 3000); // 3000ms = 3 segundos
+        }
+
+        if (successMessage) {
+            setTimeout(function() {
+                successMessage.style.display = 'none';
+            }, 3000); // 3000ms = 3 segundos
+        }
+    });
+</script>
 
 </body>
 </html>

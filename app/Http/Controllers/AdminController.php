@@ -112,7 +112,9 @@ class AdminController extends Controller
                     <td align="center" colspan="3">No results found</td>
                 </tr>';
             }
-            return response()->json(['html' => $output]);
+            //return response()->json(['html' => $output]);
+            return redirect('/home')->with('status', 'Usuário atualizado com sucesso!');
+
         }
     }
 
@@ -135,7 +137,8 @@ class AdminController extends Controller
         // Recuperar a instância da matéria criada
 
         // Redirecione para alguma página após a criação da matéria
-        return response()->json(['success' => 'Turma criada com sucesso!' . $turma]);
+        return redirect('/addTurma')->with('status', 'Turma criada com sucesso.');
+       // return response()->json(['success' => 'Turma criada com sucesso!' . $turma]);
         // Crie uma nova instância do modelo Subject e atribua os valores dos campos
     }
 

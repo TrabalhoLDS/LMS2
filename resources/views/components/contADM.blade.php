@@ -144,6 +144,20 @@
 <div class="container">
     <h1>Usuários Cadastrados</h1>
 
+<!-- Esta seção exibe mensagens de status e erro -->
+    @if (session('status'))
+        <div id="statusMessage" class="alert alert-success">
+            {{ session('status') }}
+        </div>
+    @endif
+
+    @if (session('error'))
+        <div id="errorMessage" class="alert alert-danger">
+            {{ session('error') }}
+        </div>
+    @endif
+
+
     <div class="card">
         <form class="custom-search-form">
             <div class="input-group-prepend">
@@ -206,6 +220,28 @@
         });
     });
 </script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        // Seleciona as mensagens pelo ID
+        var statusMessage = document.getElementById('statusMessage');
+        var errorMessage = document.getElementById('errorMessage');
+
+        // Verifica se as mensagens existem e define um timer para ocultá-las
+        if (statusMessage) {
+            setTimeout(function() {
+                statusMessage.style.display = 'none';
+            }, 3000); // 3000ms = 3 segundos
+        }
+
+        if (errorMessage) {
+            setTimeout(function() {
+                errorMessage.style.display = 'none';
+            }, 3000); // 3000ms = 3 segundos
+        }
+    });
+</script>
+
 
 </body>
 </html>

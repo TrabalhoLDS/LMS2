@@ -102,7 +102,7 @@
     </div>
 
     @if ($errors->any())
-    <div class="alert alert-danger">
+    <div id="errorMessages" class="alert alert-danger">
         <ul>
             @foreach ($errors->all() as $error)
                 <li>{{ $error }}</li>
@@ -112,19 +112,50 @@
 @endif
 
 @if (session('error'))
-    <div class="alert alert-danger">
+    <div id="errorMessage" class="alert alert-danger">
         {{ session('error') }}
     </div>
 @endif
 
 @if (session('success'))
-    <div class="alert alert-success">
+    <div id="successMessage" class="alert alert-success">
         {{ session('success') }}
     </div>
 @endif
 
+
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        // Seleciona as mensagens pelo ID
+        var errorMessages = document.getElementById('errorMessages');
+        var errorMessage = document.getElementById('errorMessage');
+        var successMessage = document.getElementById('successMessage');
+
+        // Verifica se as mensagens existem e define um timer para ocultá-las
+        if (errorMessages) {
+            setTimeout(function() {
+                errorMessages.style.display = 'none';
+            }, 5000); // 3000ms = 3 segundos
+        }
+
+        if (errorMessage) {
+            setTimeout(function() {
+                errorMessage.style.display = 'none';
+            }, 3000); // 3000ms = 3 segundos
+        }
+
+        if (successMessage) {
+            setTimeout(function() {
+                successMessage.style.display = 'none';
+            }, 3000); // 3000ms = 3 segundos
+        }
+    });
+</script>
+
+
 </body>
 </html>
