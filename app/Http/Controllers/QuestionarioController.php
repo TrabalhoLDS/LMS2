@@ -44,9 +44,9 @@ class QuestionarioController extends Controller
     /**
      * Armazena um novo questionário no banco de dados.
      */
-    public function store(Request $request, $turma_id)
+    public function store(Request $request)
     {
-
+        dd($request->all());
 
         // Valida o formulário
         $validatedData = $request->validate([
@@ -72,10 +72,7 @@ class QuestionarioController extends Controller
             return back()->withErrors('Professor não encontrado.');
         }
 
-        $turma = Turma::find($turma_id);
-        if (!$turma) {
-            return response()->json(['message' => 'Turma não encontrada com ID ' . $turma_id], 404);
-        }
+        $turma = Turma::findOrFail($validatedData['turma_id']);
 
         // Adiciona as questões (se necessário)
         if ($request->has('questoes')) {
@@ -87,7 +84,7 @@ class QuestionarioController extends Controller
             }
         }
 
-        $questionario->turmas()->attach($turma_id);
+        $questionario->turmas()->attach($validatedData['turma_id']);
 
         return response()->json(['success' => 'Aula salva com sucesso.'], 200);
     }
