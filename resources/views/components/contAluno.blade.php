@@ -45,7 +45,6 @@
                                                     </li>
                                                 @endforelse
                                             </ul>
-
                                         </div>
                                     </div>
                                 </div>
