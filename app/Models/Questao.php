@@ -11,12 +11,20 @@ class Questao extends Model
 
     protected $table = 'questoes';
 
-    protected $fillable = ['questionario_id', 'pergunta'];
+    protected $fillable = [
+        'questionario_id', 
+        'texto', 
+        'imagem', 
+        'opcoes', 
+        'correta'
+    ];
+
+    protected $casts = [
+        'opcoes' => 'array', // Converte o campo 'opcoes' para um array automaticamente
+    ];
 
     public function questionario()
     {
         return $this->belongsTo(Questionario::class);
     }
-
-    
 }

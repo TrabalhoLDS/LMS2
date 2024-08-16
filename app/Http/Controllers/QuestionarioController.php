@@ -46,24 +46,27 @@ class QuestionarioController extends Controller
      */
     public function store(Request $request)
     {
-
-
         // Valida o formulário
         $validatedData = $request->validate([
             'titulo' => 'required|string|max:255',
-            'descricao' => 'nullable|string'
+            'descricao' => 'nullable|string',
+            'questoes' => 'required|array',
+            'questoes.*.texto' => 'required|string',
+            'questoes.*.opcoes' => 'required|array|min:2', // Mínimo de 2 opções
+            'questoes.*.opcoes.*' => 'required|string',
+            'questoes.*.correta' => 'required|integer|min:0',
+            'questoes.*.imagem' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048', // Validação da imagem
         ]);
-
-
+    
         // Cria o questionário
         $questionario = Questionario::create([
             'titulo' => $validatedData['titulo'],
             'descricao' => $validatedData['descricao'],
         ]);
-
+    
         // Encontra o professor
         $professor = Professor::where('user_id', Auth::id())->first();
-
+    
         if ($professor) {
             // Associa o questionário ao professor
             $professor->questionarios()->attach($questionario->id);
@@ -71,22 +74,30 @@ class QuestionarioController extends Controller
             // Trata o caso em que o professor não foi encontrado
             return back()->withErrors('Professor não encontrado.');
         }
-
-
-        // Adiciona as questões (se necessário)
+    
+        // Adiciona as questões
         if ($request->has('questoes')) {
             foreach ($request->questoes as $questaoData) {
+                // Armazena a imagem, se houver
+                $imagemPath = null;
+                if (isset($questaoData['imagem'])) {
+                    $imagemPath = $questaoData['imagem']->store('imagens_questoes', 'public');
+                }
+    
+                // Cria a questão e associa ao questionário
                 $questionario->questoes()->create([
-                    'pergunta' => $questaoData['texto'],
-                    // Adicione os outros campos conforme necessário
+                    'texto' => $questaoData['texto'],
+                    'imagem' => $imagemPath,
+                    'opcoes' => json_encode($questaoData['opcoes']),
+                    'correta' => $questaoData['correta'],
                 ]);
             }
         }
-
-
-        //return response()->json(['success' => 'Aula salva com sucesso.'], 200);
-        return redirect('/home')->with('status', 'Usuário atualizado com sucesso!');
+    
+        // Retorna com sucesso
+        return redirect('/home')->with('status', 'Questionário criado com sucesso!');
     }
+    
 
 
 
