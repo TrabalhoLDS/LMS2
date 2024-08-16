@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Professor;
+use App\Models\Turma;
 use Illuminate\Http\Request;
 use App\Models\Usuario;
+use Illuminate\Support\Facades\Auth;
 
 class UsuarioController extends Controller
 {
@@ -107,8 +109,22 @@ public function QuizAti()
          }
 
             // Redireciona para a home com uma mensagem de sucesso
-            return redirect('/home')->with('status', 'Tipo de usuário atualizado com sucesso.');            
+            return redirect('/home')->with('status', 'Tipo de usuário atualizado com sucesso.');
      }
+
+     public function discAluno($turma_id)
+    {
+        if (Auth::id()) {
+            $usertype = Auth()->user()->usertype;
+
+            if ($usertype == 'prof') {
+                $turma = Turma::findOrFail($turma_id);
+
+                return view('disciplinaaluno', compact('turma'));
+            }
+        }
+
+    }
 
 
     /**

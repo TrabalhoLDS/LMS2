@@ -82,7 +82,7 @@ Route::middleware(['auth', 'prof'])->group(function () {
     //Professor visualiza detalhes atividades
 
     Route::resource('questionarios', QuestionarioController::class);
-    
+
 });
 
 
@@ -108,6 +108,7 @@ Route::get('/atividades/create', [AtividadeController::class, 'create'])->name('
 Route::post('/atividade/store', [AtividadeController::class, 'store'])->name('atividades.store');
 Route::post('/atividades/{turma_id}', [AtividadeController::class, 'store'])->name('atividades.store');
 Route::post('/atividades/{id}/submit', [AtividadeController::class, 'submit'])->name('atividades.submit'); // rota das atividades no mural
-Route::get('/atividades/{id}', [AtividadeController::class, 'show'])->name('atividades.show');  // rota do link de para atividades
+Route::get('/atividades/{id}', [AtividadeController::class, 'show'])->name('atividades.show');
+Route::get('/disciplinaaluno/{turma_id}', [UsuarioController::class, 'discAluno'])->name('aluno.disciplinaaluno');  // rota do link de para atividades
 //Route::get('/atividades', [AtividadeController::class, 'index'])->name('atividades.index');
 //Route::get('/home', [AtividadeController::class, 'authenticated'])->name('home');

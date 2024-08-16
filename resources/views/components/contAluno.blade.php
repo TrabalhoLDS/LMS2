@@ -74,7 +74,7 @@
                             <div class="d-flex align-items-center">
                                 @forelse ($turmas as $turma)
                                     <li>
-                                        <a href="#" class="turma">
+                                        <a href="{{ route('aluno.disciplinaaluno', ['turma_id'=>$turma->id]) }}" class="turma">
                                             <p>{{ $turma->nome }}</p>
                                             <span class="icones">
                                                 <i class="fas fa-chart-bar" title="Estatísticas"></i>
