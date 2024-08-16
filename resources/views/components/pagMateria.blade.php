@@ -95,6 +95,9 @@
   </style>
 </head>
 <body>
+
+
+
   <div class="container">
     <h1 class="titulo">
       <i class="fas fa-calculator icone-matematica"></i>{{ $turma->nome }}
@@ -161,5 +164,42 @@
 
   <!-- Adicionando Bootstrap JS -->
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+
+<!-- Esta seção exibe mensagens de status e erro -->
+@if (session('status'))
+            <div id="statusMessage" class="alert alert-success">
+                {{ session('status') }}
+            </div>
+        @endif
+
+        @if (session('error'))
+            <div id="errorMessage" class="alert alert-danger">
+                {{ session('error') }}
+            </div>
+        @endif
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        // Seleciona as mensagens pelo ID
+        var statusMessage = document.getElementById('statusMessage');
+        var errorMessage = document.getElementById('errorMessage');
+
+        // Verifica se as mensagens existem e define um timer para ocultá-las
+        if (statusMessage) {
+            setTimeout(function() {
+                statusMessage.style.display = 'none';
+            }, 3000); // 3000ms = 3 segundos
+        }
+
+        if (errorMessage) {
+            setTimeout(function() {
+                errorMessage.style.display = 'none';
+            }, 3000); // 3000ms = 3 segundos
+        }
+    });
+</script>
+
+
 </body>
 </html>

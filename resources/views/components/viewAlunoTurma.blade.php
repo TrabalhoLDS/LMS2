@@ -121,20 +121,11 @@
     <div class="row justify-content-center">
         <div class="col-md-8 text-center">
             <h1>Vincular Alunos a Turma</h1>
+            
         </div>
     </div>
 
-       @if (session('error'))
-            <div id="errorMessage" class="alert alert-danger">
-                {{ session('error') }}
-            </div>
-        @endif
-
-        @if (session('success'))
-            <div id="successMessage" class="alert alert-success">
-                {{ session('success') }}
-            </div>
-        @endif
+       
 
     <div class="card">
         <div class="card-body">
@@ -166,6 +157,18 @@
         </div>
     </div>
 </div>
+
+@if (session('error'))
+            <div id="errorMessage" class="alert alert-danger">
+                {{ session('error') }}
+            </div>
+        @endif
+
+        @if (session('success'))
+            <div id="successMessage" class="alert alert-success">
+                {{ session('success') }}
+            </div>
+        @endif
 
 <script>
     document.addEventListener("DOMContentLoaded", function() {

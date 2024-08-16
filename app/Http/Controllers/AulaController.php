@@ -67,7 +67,10 @@ class AulaController extends Controller
     } catch (QueryException $e) {
         // Captura de erros específicos relacionados ao banco de dados
         Log::error('Erro ao salvar a aula no banco de dados: ' . $e->getMessage());
-        return response()->json(['error' => 'Erro ao salvar a aula no banco de dados.'], 500);
+        //return response()->json(['error' => 'Erro ao salvar a aula no banco de dados.'], 500);
+        return redirect('/home')->with('status', 'Erro ao salvar a aula no banco de dados');
+
+
 
     } catch (Exception $e) {
         // Captura de erros gerais

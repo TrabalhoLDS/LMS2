@@ -81,6 +81,19 @@
                 <div class="card">
                     <div class="card-header">
                         <h2>Adicionar Questionário</h2>
+
+    <!-- Esta seção exibe mensagens de status e erro -->
+    @if (session('status'))
+            <div id="statusMessage" class="alert alert-success">
+                {{ session('status') }}
+            </div>
+        @endif
+
+        @if (session('error'))
+            <div id="errorMessage" class="alert alert-danger">
+                {{ session('error') }}
+            </div>
+        @endif
                     </div>
                     <!-- Botão de Voltar -->
                     <a href="../home" class="btn-voltar"><i class="fas fa-arrow-left"></i><- Voltar</a>
@@ -177,6 +190,30 @@
             button.parentElement.remove();
         }
     </script>
+
+
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        // Seleciona as mensagens pelo ID
+        var statusMessage = document.getElementById('statusMessage');
+        var errorMessage = document.getElementById('errorMessage');
+
+        // Verifica se as mensagens existem e define um timer para ocultá-las
+        if (statusMessage) {
+            setTimeout(function() {
+                statusMessage.style.display = 'none';
+            }, 3000); // 3000ms = 3 segundos
+        }
+
+        if (errorMessage) {
+            setTimeout(function() {
+                errorMessage.style.display = 'none';
+            }, 3000); // 3000ms = 3 segundos
+        }
+    });
+</script>
+
 
 </body>
 

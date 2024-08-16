@@ -84,7 +84,8 @@ class QuestionarioController extends Controller
         }
 
 
-        return response()->json(['success' => 'Aula salva com sucesso.'], 200);
+        //return response()->json(['success' => 'Aula salva com sucesso.'], 200);
+        return redirect('/home')->with('status', 'Usuário atualizado com sucesso!');
     }
 
 
